@@ -1,0 +1,29 @@
+/**
+ * Version numbers configuration file.
+ * Adjust your build tools and app versions here.
+ */
+
+ext {
+
+    /**
+     * Build Tools Versions
+     */
+    androidBuildToolsVersion = '23.0.3'
+    androidTargetSdkVersion = 23
+    androidCompileSdkVersion = 23
+    androidMinSdkVersion = 16
+
+    /**
+     * App Version
+     * The final versionCode and versionName build properties will be automatically formed from the nnumbers below
+     */
+    appVersionMajor = 1
+    appVersionMinor = 0
+    appVersionPatch = 0
+    appVersionBuild = 0
+
+    /**
+     * App Identifier
+     */
+    appId = 'eu.livotov.android.appskeleton'
+}

@@ -1,0 +1,38 @@
+/**
+ * This is te system deps artifacts and versions configuration file.
+ * You can put here your app-specific deps too, if you wish.
+ */
+
+ext {
+    supportLibVersion = '23.2.1'
+    wearableSupportVersion = '1.3.0'
+    gmsLibVersion = '8.4.0'
+    multidexLibVersion = '1.0.1'
+
+    supportLibs = [
+            design      : "com.android.support:design:${supportLibVersion}",
+            recyclerView: "com.android.support:recyclerview-v7:${supportLibVersion}",
+            cardView    : "com.android.support:cardview-v7:${supportLibVersion}",
+            appCompat   : "com.android.support:appcompat-v7:${supportLibVersion}",
+            annotation  : "com.android.support:support-annotations:${supportLibVersion}",
+            palette     : "com.android.support:palette-v7:${supportLibVersion}",
+    ]
+
+    playServicesLibs = [
+            base     : "com.google.android.gms:play-services-base:${gmsLibVersion}",
+            gcm      : "com.google.android.gms:play-services-gcm:${gmsLibVersion}",
+            location : "com.google.android.gms:play-services-location:${gmsLibVersion}",
+            maps     : "com.google.android.gms:play-services-maps:${gmsLibVersion}",
+            analytics: "com.google.android.gms:play-services-analytics:${gmsLibVersion}",
+            wearable : "com.google.android.gms:play-services-wearable:${gmsLibVersion}",
+            all      : "com.google.android.gms:play-services:${gmsLibVersion}",
+    ]
+
+    miscLibs = [
+            multidex: "com.android.support:multidex:${multidexLibVersion}",
+    ]
+
+    wearLibs = [
+            support : "com.google.android.support:wearable:${wearableSupportVersion}",
+    ]
+}
