@@ -1,7 +1,5 @@
 package eu.livotov.android.appskeleton.event;
 
-import android.text.TextUtils;
-
 import eu.livotov.android.appskeleton.screen.BaseActivity;
 
 /**
@@ -9,37 +7,37 @@ import eu.livotov.android.appskeleton.screen.BaseActivity;
  */
 public class EventForceFinishActivity
 {
-    private BaseActivity exception;
-    private Class activityClass;
+    private BaseActivity instanceToKeep;
+    private Class activityClassToKillAll;
 
     public EventForceFinishActivity()
     {
     }
 
-    public EventForceFinishActivity(Class activityClass)
+    public EventForceFinishActivity(Class activityClassToKillAll)
     {
-        this.activityClass = activityClass;
+        this.activityClassToKillAll = activityClassToKillAll;
     }
 
     public EventForceFinishActivity(BaseActivity instanceToKeep)
     {
-        activityClass = instanceToKeep.getClass();
-        exception = instanceToKeep;
+        activityClassToKillAll = instanceToKeep.getClass();
+        this.instanceToKeep = instanceToKeep;
     }
 
-    public Class getActivityClass()
+    public Class getActivityClassToKillAll()
     {
-        return activityClass;
+        return activityClassToKillAll;
     }
 
     public boolean matches(BaseActivity activity)
     {
-        if (exception !=null && exception == activity)
+        if (instanceToKeep !=null && instanceToKeep == activity)
         {
             return false;
         } else
         {
-            return activityClass == null || activityClass.equals(activity.getClass());
+            return activityClassToKillAll == null || activityClassToKillAll.equals(activity.getClass());
         }
     }
 }

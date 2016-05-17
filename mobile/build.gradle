@@ -159,6 +159,11 @@ dependencies {
      */
 
     /**
+     * MVP
+     */
+    compile 'eu.inloop:androidviewmodel:1.0.0'
+
+    /**
      * Material design support
      */
     compile "com.mikepenz:materialize:0.8.8@aar"

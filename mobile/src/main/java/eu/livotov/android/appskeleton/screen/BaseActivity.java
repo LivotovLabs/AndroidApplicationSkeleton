@@ -14,7 +14,6 @@ import eu.livotov.android.appskeleton.event.EventGenericError;
 import eu.livotov.android.appskeleton.event.EventUITaskProgressUpdate;
 import eu.livotov.android.appskeleton.event.EventUITaskStarted;
 import eu.livotov.android.appskeleton.task.EventUITaskCompleted;
-import eu.livotov.labs.android.robotools.app.RTActivity;
 
 /**
  * Created by dlivotov on 09/02/2016.
@@ -27,19 +26,27 @@ public class BaseActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        App.subscribe(this);
+        App.subscribeForSystemEvents(this);
     }
 
     @Override
     protected void onResume()
     {
         super.onResume();
+        App.subscribe(this);
+    }
+
+    @Override
+    protected void onPause()
+    {
+        App.unsubscribe(this);
+        super.onPause();
     }
 
     @Override
     protected void onDestroy()
     {
-        App.unsubscribe(this);
+        App.unsubscribeFromSystemEvents(this);
         super.onDestroy();
     }
 
@@ -77,11 +84,11 @@ public class BaseActivity extends AppCompatActivity
 
     public void finishAllInstances()
     {
-        App.postEvent(new EventForceFinishActivity(getClass()));
+        App.postSystemEvent(new EventForceFinishActivity(getClass()));
     }
 
     public void finishAllInstancesButMe()
     {
-        App.postEvent(new EventForceFinishActivity(this));
+        App.postSystemEvent(new EventForceFinishActivity(this));
     }
 }
