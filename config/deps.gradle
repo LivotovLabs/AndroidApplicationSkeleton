@@ -8,6 +8,14 @@ ext {
     wearableSupportVersion = '1.3.0'
     gmsLibVersion = '8.4.0'
     multidexLibVersion = '1.0.1'
+    rxAndroidVersion = '1.2.0'
+    rxJavaVersion = '1.1.4'
+    loggerVersion = '1.12'
+    roboToolsVersion = '3.0.1'
+    eventBusVersion = '3.0.0'
+    retrofitVersion = '2.0.2'
+    picassoVersion = '2.5.2'
+    rxLocationVersion = '0.8'
 
     supportLibs = [
             design      : "com.android.support:design:${supportLibVersion}",
@@ -30,9 +38,52 @@ ext {
 
     miscLibs = [
             multidex: "com.android.support:multidex:${multidexLibVersion}",
+
+            rx      : [
+                    "io.reactivex:rxjava:${rxJavaVersion}",
+                    "io.reactivex:rxandroid:${rxAndroidVersion}",
+            ],
+
+            logging : "com.github.orhanobut:logger:${loggerVersion}",
+
+            utils   : [
+                    "eu.livotov.labs.android:RoboToolsLibrary:${roboToolsVersion}"
+            ],
+
+            eventbus: "org.greenrobot:eventbus:${eventBusVersion}"
+    ]
+
+    networkLibs = [
+            rest: [
+                    "com.squareup.retrofit2:retrofit:${retrofitVersion}"
+            ],
+
+            imaging: [
+                    "com.squareup.picasso:picasso:${picassoVersion}"
+            ]
     ]
 
     wearLibs = [
-            support : "com.google.android.support:wearable:${wearableSupportVersion}",
+            support: "com.google.android.support:wearable:${wearableSupportVersion}",
     ]
+
+    geoLibs = [
+            "pl.charmas.android:android-reactive-location:${rxLocationVersion}@aar"
+    ]
+
+    aptLibs = [
+            java: [
+                    "com.jakewharton:butterknife:8.0.1",
+                    "in.workarounds.bundler:bundler-annotations:0.1.1",
+                    "in.workarounds.bundler:bundler-parceler:0.1.1",
+                    "org.parceler:parceler-api:1.1.2",
+            ],
+
+            apt : [
+                    "com.jakewharton:butterknife-compiler:8.0.1",
+                    "in.workarounds.bundler:bundler-compiler:0.1.1",
+                    "org.parceler:parceler:1.1.2",
+            ]
+    ]
+
 }

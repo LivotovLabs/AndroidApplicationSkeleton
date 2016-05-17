@@ -1,5 +1,8 @@
 package eu.livotov.android.appskeleton;
 
+import android.content.Context;
+import android.support.multidex.MultiDex;
+
 import org.greenrobot.eventbus.EventBus;
 
 import eu.livotov.android.appskeleton.util.AppSettings;
@@ -10,8 +13,6 @@ import eu.livotov.labs.android.robotools.app.RTApp;
  */
 public class App extends RTApp
 {
-    private static App INSTANCE;
-
     private AppSettings settings;
 
     @Override
@@ -19,7 +20,13 @@ public class App extends RTApp
     {
         super.onCreate();
         init();
-        INSTANCE = this;
+    }
+
+    @Override
+    protected void attachBaseContext(Context base)
+    {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
     }
 
     private void init()
@@ -27,9 +34,9 @@ public class App extends RTApp
         settings = new AppSettings(this);
     }
 
-    public static App getContext()
+    public static AppSettings getSettings()
     {
-        return INSTANCE;
+        return ((App) getInstance()).settings;
     }
 
     public static void postEvent(Object event)

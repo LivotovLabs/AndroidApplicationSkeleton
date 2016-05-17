@@ -1,10 +1,15 @@
-apply plugin: 'com.android.application'
+buildscript {
+    repositories {
+        jcenter()
+    }
 
-repositories {
-    maven {
-        url "http://dl.bintray.com/livotovlabs/maven"
+    dependencies {
     }
 }
+
+apply plugin: 'com.android.application'
+apply plugin: 'com.jakewharton.hugo'
+apply plugin: 'com.neenbedankt.android-apt'
 
 def gitSha() {
     return 'git rev-parse --short HEAD'.execute().text.trim()
@@ -98,9 +103,36 @@ dependencies {
     wearApp project(':wear')
 
     /**
-     * System android tools
+     * ===============================================================
+     * System Libraries
+     * ===============================================================
+     */
+
+    /**
+     * Core libs
      */
     compile miscLibs.multidex
+    compile miscLibs.rx
+    compile miscLibs.eventbus
+    compile miscLibs.logging
+    compile miscLibs.utils
+
+    /**
+     * Annotation processing libs
+     */
+    compile aptLibs.java
+    apt aptLibs.apt
+
+    /**
+     * Network and REST API
+     */
+    compile networkLibs.rest
+    compile networkLibs.imaging
+
+    /**
+     * Geolocation
+     */
+    compile geoLibs
 
     /**
      * Support library
@@ -121,12 +153,33 @@ dependencies {
     compile playServicesLibs.analytics
 
     /**
-     * User libs
+     * ===============================================================
+     * Third-party base libs
+     * ===============================================================
      */
-    compile 'org.greenrobot:eventbus:3.0.0'
 
     /**
+     * Material design support
+     */
+    compile "com.mikepenz:materialize:0.8.8@aar"
+    compile('com.mikepenz:materialdrawer:5.2.6@aar') { transitive = true }
+    compile 'com.roughike:bottom-bar:1.3.3'
+
+
+    /**
+     * UI libs
+     */
+    compile('com.github.afollestad.material-dialogs:core:0.8.5.6@aar') { transitive = true }
+    compile 'com.wdullaer:materialdatetimepicker:2.3.0'
+    compile 'com.kbeanie:multipicker:1.0.10@aar'
+    compile('com.mikepenz:fastadapter:1.4.4@aar') { transitive = true }
+    compile 'com.mikepenz:fastadapter-extensions:1.4.2@aar'
+    compile "com.daimajia.swipelayout:library:1.2.0@aar"
+
+    /**
+     * ===============================================================
      * Tests
+     * ===============================================================
      */
     testCompile 'junit:junit:4.12'
 }

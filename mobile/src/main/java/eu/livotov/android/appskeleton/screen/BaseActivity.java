@@ -1,6 +1,7 @@
 package eu.livotov.android.appskeleton.screen;
 
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import org.greenrobot.eventbus.Subscribe;
 
@@ -18,7 +19,7 @@ import eu.livotov.labs.android.robotools.app.RTActivity;
 /**
  * Created by dlivotov on 09/02/2016.
  */
-public class BaseActivity extends RTActivity
+public class BaseActivity extends AppCompatActivity
 {
     private List<String> runningTasks = new ArrayList<>();
 
@@ -32,8 +33,14 @@ public class BaseActivity extends RTActivity
     @Override
     protected void onResume()
     {
-        App.unsubscribe(this);
         super.onResume();
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        App.unsubscribe(this);
+        super.onDestroy();
     }
 
     @Subscribe
