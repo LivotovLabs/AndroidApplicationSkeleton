@@ -22,11 +22,19 @@ So, this project is just a skeleton with:
 
 ## Quick Start
 
-- Copy this project into your new app project folder
-- Open in Android Studio
-- Change the package name to fit your new app
-- Remove the unneeded deps, add your specific deps
-- Start coding the actual app logic instead of configuring the build
+### Initializing your new App
+- Clone or download this repo
+- When you need to start a new app project, simply run: __sh bootstrap-app.sh <your-app-package-name> <your-app-project-folder>__
+- Open <your-app-project-folder> in Android Studio
+
+### Fine-tune the project
+Now you have a nice app project which is ready to be run and loaded with the bunch of goofies. You can now fine-tune your new app project:
+
+- Generate the keystore for your app, look at config/signing.gradle to attach it to your project for automatic signing
+- Explore config/deps.gradle and mobile/build.gradle to remove the unneeded deps, add your specific ones, etc
+- Explore <your-package-name>/examples source folder to see the bundled examples - you can freely remove them or use as copy-paste source to build your app blocks
+- Explore <your-package-name>/core source folder to see base classes you can extent your app, activities and fragments from (if you wish, of course !)
+- Start coding your actual app logic
 
 
 More docs will come later, this skeleton is still in progress, stay tuned !
