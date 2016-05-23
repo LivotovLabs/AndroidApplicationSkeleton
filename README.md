@@ -24,16 +24,16 @@ So, this project is just a skeleton with:
 
 ### Initializing your new App
 - Clone or download this repo
-- When you need to start a new app project, simply run: __sh bootstrap-app.sh <your-app-package-name> <<your-app-project-folder>>__
-- Open <your-app-project-folder> in Android Studio
+- When you need to start a new app project, simply run: __sh bootstrap-app.sh YOUR_APP_PACKAGE_NAME YOUR_APP_PROJECT_FOLDER__
+- Open __YOUR_APP_PROJECT_FOLDER__ in Android Studio
 
 ### Fine-tune the project
 Now you have a nice app project which is ready to be run and loaded with the bunch of goofies. You can now fine-tune your new app project:
 
 - Generate the keystore for your app, look at config/signing.gradle to attach it to your project for automatic signing
 - Explore config/deps.gradle and mobile/build.gradle to remove the unneeded deps, add your specific ones, etc
-- Explore <your-package-name>/examples source folder to see the bundled examples - you can freely remove them or use as copy-paste source to build your app blocks
-- Explore <your-package-name>/core source folder to see base classes you can extent your app, activities and fragments from (if you wish, of course !)
+- Explore __YOUR_APP_PACKAGE_NAME/examples__ source folder to see the bundled examples - you can freely remove them or use as copy-paste source to build your app blocks
+- Explore __YOUR_APP_PACKAGE_NAME/core__ source folder to see base classes you can extent your app, activities and fragments from (if you wish, of course !)
 - Start coding your actual app logic
 
 
