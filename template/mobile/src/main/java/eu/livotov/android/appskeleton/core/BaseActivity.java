@@ -1,4 +1,4 @@
-package eu.livotov.android.appskeleton.screen;
+package eu.livotov.android.appskeleton.core;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +8,7 @@ import org.greenrobot.eventbus.Subscribe;
 import java.util.ArrayList;
 import java.util.List;
 
-import eu.livotov.android.appskeleton.App;
+import eu.livotov.android.appskeleton.core.App;
 import eu.livotov.android.appskeleton.event.EventForceFinishActivity;
 import eu.livotov.android.appskeleton.event.EventGenericError;
 import eu.livotov.android.appskeleton.event.EventUITaskProgressUpdate;

@@ -1,4 +1,4 @@
-package eu.livotov.android.appskeleton;
+package eu.livotov.android.appskeleton.core;
 
 import android.content.Context;
 import android.support.multidex.MultiDex;
