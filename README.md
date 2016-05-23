@@ -24,7 +24,7 @@ So, this project is just a skeleton with:
 
 ### Initializing your new App
 - Clone or download this repo
-- When you need to start a new app project, simply run: __sh bootstrap-app.sh <your-app-package-name> <your-app-project-folder>__
+- When you need to start a new app project, simply run: __sh bootstrap-app.sh <your-app-package-name> <<your-app-project-folder>>__
 - Open <your-app-project-folder> in Android Studio
 
 ### Fine-tune the project
