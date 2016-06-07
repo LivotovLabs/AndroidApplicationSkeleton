@@ -2,4 +2,6 @@
     <string name="full_application_name">App Skeleton</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="generic_error_dialog_title">Error</string>
+    <string name="unexpected_error_generic_text">Unexpected error, please contact application developer for support.</string>
 </resources>

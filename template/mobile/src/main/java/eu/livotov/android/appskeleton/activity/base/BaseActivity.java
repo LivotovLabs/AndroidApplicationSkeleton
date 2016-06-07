@@ -8,6 +8,7 @@ import org.greenrobot.eventbus.Subscribe;
 import java.util.ArrayList;
 import java.util.List;
 
+import eu.livotov.android.appskeleton.R;
 import eu.livotov.android.appskeleton.core.App;
 import eu.livotov.android.appskeleton.event.system.EventForceFinishActivity;
 import eu.livotov.android.appskeleton.event.system.EventGenericError;
@@ -62,6 +63,7 @@ public class BaseActivity extends AppCompatActivity
     @Subscribe
     public void onGenericError(EventGenericError error)
     {
+        App.showMessage(App.getContext().getString(R.string.generic_error_dialog_title), error.toString(), null);
     }
 
     @Subscribe
