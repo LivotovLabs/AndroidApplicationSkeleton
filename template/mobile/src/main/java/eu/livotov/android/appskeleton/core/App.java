@@ -17,16 +17,30 @@ public class App extends BaseApp implements GcmListener
     {
         super.onCreate();
 
-        // Remove if you don't need the GCM support
+        // Remove if you don't need the GCM support. Otherwise add business code to the two methods below :)
         EasyGcm.init(this);
     }
 
+    /**
+     * Incoming push message is received here in a background thread, locked by a WakeLock.
+     * Process your message here without spawning any other addition threads.
+     * Do not spawn any other threads from here.
+     *
+     * @param sender push sender ID
+     * @param bundle push message payload.
+     */
     @Override
     public void onMessage(String sender, Bundle bundle)
     {
 
     }
 
+    /**
+     * Send the supplied push token to your backend server here.
+     * The method is invoked in a background thread, locked by a WakeLock, so feel free to access network from there.
+     * Do not spawn any other threads from here.
+     * @param token new push token to be sent to your own backend server
+     */
     @Override
     public void sendRegistrationIdToBackend(String token)
     {
