@@ -8,6 +8,7 @@ buildscript {
 }
 
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.jakewharton.hugo'
 apply plugin: 'com.neenbedankt.android-apt'
 
@@ -111,32 +112,6 @@ dependencies {
      */
 
     /**
-     * Core libs
-     */
-    compile miscLibs.multidex
-    compile miscLibs.rx
-    compile miscLibs.eventbus
-    compile miscLibs.logging
-    compile miscLibs.utils
-
-    /**
-     * Annotation processing libs
-     */
-    compile aptLibs.java
-    apt aptLibs.apt
-
-    /**
-     * Network and REST API
-     */
-    compile networkLibs.rest
-    compile networkLibs.imaging
-
-    /**
-     * Geolocation
-     */
-    compile geoLibs
-
-    /**
      * Support library
      */
     compile supportLibs.appCompat
@@ -145,6 +120,7 @@ dependencies {
     compile supportLibs.recyclerView
     compile supportLibs.design
     compile supportLibs.cardView
+    compile supportLibs.multidex
 
     /**
      * Play Services
@@ -156,20 +132,74 @@ dependencies {
 
     /**
      * ===============================================================
-     * Other libs
-     * They're not a basement ones, so we do not move them info a
-     * config/deps.gradle in order to simplify the management process
-     * (add/remove/update)
+     * Important third-party libs, this project generally depends on
      * ===============================================================
      */
 
     /**
-     * MVP
+     * GCM Support
+     */
+    compile playServicesLibs.gcm
+    compile('eu.inloop:easygcm:1.6.2@aar') {
+        exclude group: 'com.google.android.gms', module: 'play-services-gcm'
+        exclude group: 'com.google.android.gms', module: 'play-services-base'
+        exclude group: 'com.google.android.gms', module: 'play-services-location'
+    }
+
+    /**
+     * Reactive Extensions to JVM
+     */
+    compile 'io.reactivex:rxjava:1.1.4'
+    compile 'io.reactivex:rxandroid:1.2.0'
+
+    /**
+     * Events Bus
+     */
+    compile 'org.greenrobot:eventbus:3.0.0'
+
+    /**
+     * Extended Logger
+     */
+    compile 'com.github.orhanobut:logger:1.12'
+
+    /**
+     * RoboTools General Utils Library
+     */
+    compile('eu.livotov.labs.android:RoboToolsLibrary:3.0.1') { transitive = true }
+
+    /**
+     * REST API Client
+     */
+    compile 'com.squareup.retrofit2:retrofit:2.0.2'
+
+    /**
+     * Image Loader Library
+     */
+    compile 'com.squareup.picasso:picasso:2.5.2'
+
+    /**
+     * Reactive Extension To Google Location Services
+     */
+    compile 'pl.charmas.android:android-reactive-location:0.8'
+
+    /**
+     * Annotation-based Processing Tools
+     */
+    compile 'com.jakewharton:butterknife:8.0.1'
+    compile 'in.workarounds.bundler:bundler-annotations:0.1.1'
+    compile 'in.workarounds.bundler:bundler-parceler:0.1.1'
+    compile 'org.parceler:parceler-api:1.1.2'
+    apt 'com.jakewharton:butterknife-compiler:8.0.1'
+    apt 'in.workarounds.bundler:bundler-compiler:0.1.1'
+    apt 'org.parceler:parceler:1.1.2'
+
+    /**
+     * MVP Support
      */
     compile 'eu.inloop:androidviewmodel:1.0.0'
 
     /**
-     * Material design support
+     * Material Design Support
      */
     compile "com.mikepenz:materialize:0.8.8@aar"
     compile('com.mikepenz:materialdrawer:5.2.6@aar') { transitive = true }
@@ -177,9 +207,8 @@ dependencies {
     compile('com.github.afollestad.material-dialogs:core:0.8.5.6@aar') { transitive = true }
     compile 'com.wdullaer:materialdatetimepicker:2.3.0'
 
-
     /**
-     * UI libs
+     * UI Libs
      */
     compile 'com.kbeanie:multipicker:1.0.10@aar'
     compile('com.mikepenz:fastadapter:1.4.4@aar') { transitive = true }

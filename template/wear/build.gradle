@@ -97,7 +97,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile wearLibs.support
+    compile wearSupportLibs.support
     compile playServicesLibs.wearable
 }
 
