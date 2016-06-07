@@ -1,4 +1,4 @@
-package eu.livotov.android.appskeleton.event;
+package eu.livotov.android.appskeleton.event.system;
 
 import eu.livotov.android.appskeleton.core.BaseActivity;
 

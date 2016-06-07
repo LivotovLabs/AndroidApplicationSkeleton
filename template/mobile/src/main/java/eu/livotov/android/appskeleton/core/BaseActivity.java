@@ -8,11 +8,10 @@ import org.greenrobot.eventbus.Subscribe;
 import java.util.ArrayList;
 import java.util.List;
 
-import eu.livotov.android.appskeleton.core.App;
-import eu.livotov.android.appskeleton.event.EventForceFinishActivity;
-import eu.livotov.android.appskeleton.event.EventGenericError;
-import eu.livotov.android.appskeleton.event.EventUITaskProgressUpdate;
-import eu.livotov.android.appskeleton.event.EventUITaskStarted;
+import eu.livotov.android.appskeleton.event.system.EventForceFinishActivity;
+import eu.livotov.android.appskeleton.event.system.EventGenericError;
+import eu.livotov.android.appskeleton.event.system.EventUITaskProgressUpdate;
+import eu.livotov.android.appskeleton.event.system.EventUITaskStarted;
 import eu.livotov.android.appskeleton.task.EventUITaskCompleted;
 
 /**
@@ -30,10 +29,10 @@ public class BaseActivity extends AppCompatActivity
     }
 
     @Override
-    protected void onResume()
+    protected void onDestroy()
     {
-        super.onResume();
-        App.subscribe(this);
+        App.unsubscribeFromSystemEvents(this);
+        super.onDestroy();
     }
 
     @Override
@@ -44,10 +43,10 @@ public class BaseActivity extends AppCompatActivity
     }
 
     @Override
-    protected void onDestroy()
+    protected void onResume()
     {
-        App.unsubscribeFromSystemEvents(this);
-        super.onDestroy();
+        super.onResume();
+        App.subscribe(this);
     }
 
     @Subscribe

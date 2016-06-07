@@ -3,8 +3,8 @@ package eu.livotov.android.appskeleton.task;
 import java.util.UUID;
 
 import eu.livotov.android.appskeleton.core.App;
-import eu.livotov.android.appskeleton.event.EventUITaskProgressUpdate;
-import eu.livotov.android.appskeleton.event.EventUITaskStarted;
+import eu.livotov.android.appskeleton.event.system.EventUITaskProgressUpdate;
+import eu.livotov.android.appskeleton.event.system.EventUITaskStarted;
 import eu.livotov.labs.android.robotools.os.RTLongTermUITask;
 
 /**
@@ -18,19 +18,6 @@ public abstract class UITask extends RTLongTermUITask
     public String getId()
     {
         return id;
-    }
-
-    @Override
-    protected void publishEvent(Object event, boolean stickyDelivery)
-    {
-        if (stickyDelivery)
-        {
-            App.postStickyEvent(event);
-        }
-        else
-        {
-            App.postEvent(event);
-        }
     }
 
     @Override
@@ -49,6 +36,19 @@ public abstract class UITask extends RTLongTermUITask
 
             default:
                 return null;
+        }
+    }
+
+    @Override
+    protected void publishEvent(Object event, boolean stickyDelivery)
+    {
+        if (stickyDelivery)
+        {
+            App.postStickyEvent(event);
+        }
+        else
+        {
+            App.postEvent(event);
         }
     }
 }

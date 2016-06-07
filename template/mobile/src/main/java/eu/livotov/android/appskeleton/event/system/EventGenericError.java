@@ -1,4 +1,4 @@
-package eu.livotov.android.appskeleton.event;
+package eu.livotov.android.appskeleton.event.system;
 
 /**
  * Created by dlivotov on 09/02/2016.
