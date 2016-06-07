@@ -3,11 +3,11 @@ package eu.livotov.android.appskeleton.event.system;
 /**
  * Created by dlivotov on 09/02/2016.
  */
-public class EventUITaskStarted
+public class UITaskStartedEvent
 {
     private final String id;
 
-    public EventUITaskStarted(String id)
+    public UITaskStartedEvent(String id)
     {
         this.id = id;
     }

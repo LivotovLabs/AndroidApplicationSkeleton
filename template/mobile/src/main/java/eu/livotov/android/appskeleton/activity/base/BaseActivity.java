@@ -10,10 +10,10 @@ import java.util.List;
 
 import eu.livotov.android.appskeleton.R;
 import eu.livotov.android.appskeleton.core.App;
-import eu.livotov.android.appskeleton.event.system.EventForceFinishActivity;
-import eu.livotov.android.appskeleton.event.system.EventGenericError;
-import eu.livotov.android.appskeleton.event.system.EventUITaskProgressUpdate;
-import eu.livotov.android.appskeleton.event.system.EventUITaskStarted;
+import eu.livotov.android.appskeleton.event.system.ForceFinishActivityEvent;
+import eu.livotov.android.appskeleton.event.system.GenericErrorEvent;
+import eu.livotov.android.appskeleton.event.system.UITaskProgressUpdateEvent;
+import eu.livotov.android.appskeleton.event.system.UITaskStartedEvent;
 import eu.livotov.android.appskeleton.task.EventUITaskCompleted;
 
 /**
@@ -52,7 +52,7 @@ public class BaseActivity extends AppCompatActivity
     }
 
     @Subscribe
-    public void forceQuitEvent(EventForceFinishActivity data)
+    public void forceQuitEvent(ForceFinishActivityEvent data)
     {
         if (data.matches(this))
         {
@@ -61,13 +61,13 @@ public class BaseActivity extends AppCompatActivity
     }
 
     @Subscribe
-    public void onGenericError(EventGenericError error)
+    public void onGenericError(GenericErrorEvent error)
     {
         App.showMessage(App.getContext().getString(R.string.generic_error_dialog_title), error.toString(), null);
     }
 
     @Subscribe
-    public void onUITaskStarted(EventUITaskStarted task)
+    public void onUITaskStarted(UITaskStartedEvent task)
     {
         runningTasks.add(task.getId());
     }
@@ -79,18 +79,18 @@ public class BaseActivity extends AppCompatActivity
     }
 
     @Subscribe
-    public void onUITaskProgressUpdate(EventUITaskProgressUpdate task)
+    public void onUITaskProgressUpdate(UITaskProgressUpdateEvent task)
     {
     }
 
     public void finishAllInstances()
     {
-        App.postSystemEvent(new EventForceFinishActivity(getClass()));
+        App.postSystemEvent(new ForceFinishActivityEvent(getClass()));
     }
 
     public void finishAllInstancesButThis()
     {
-        App.postSystemEvent(new EventForceFinishActivity(getClass()).keepInstanceOf(this));
+        App.postSystemEvent(new ForceFinishActivityEvent(getClass()).keepInstanceOf(this));
     }
 
 }

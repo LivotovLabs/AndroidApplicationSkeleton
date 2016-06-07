@@ -3,8 +3,8 @@ package eu.livotov.android.appskeleton.task;
 import java.util.UUID;
 
 import eu.livotov.android.appskeleton.core.App;
-import eu.livotov.android.appskeleton.event.system.EventUITaskProgressUpdate;
-import eu.livotov.android.appskeleton.event.system.EventUITaskStarted;
+import eu.livotov.android.appskeleton.event.system.UITaskProgressUpdateEvent;
+import eu.livotov.android.appskeleton.event.system.UITaskStartedEvent;
 import eu.livotov.labs.android.robotools.os.RTLongTermUITask;
 
 /**
@@ -26,10 +26,10 @@ public abstract class UITask extends RTLongTermUITask
         switch (state)
         {
             case OperationProgressUpdate:
-                return new EventUITaskProgressUpdate(id, currentProgress);
+                return new UITaskProgressUpdateEvent(id, currentProgress);
 
             case OperationStart:
-                return new EventUITaskStarted(id);
+                return new UITaskStartedEvent(id);
 
             case OperationStopped:
                 return new EventUITaskCompleted(id);

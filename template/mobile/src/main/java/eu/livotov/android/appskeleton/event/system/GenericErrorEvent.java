@@ -6,11 +6,11 @@ import eu.livotov.android.appskeleton.core.App;
 /**
  * Created by dlivotov on 09/02/2016.
  */
-public class EventGenericError
+public class GenericErrorEvent
 {
     private Throwable cause;
 
-    public EventGenericError(Throwable cause)
+    public GenericErrorEvent(Throwable cause)
     {
         this.cause = cause;
     }

@@ -5,21 +5,21 @@ import eu.livotov.android.appskeleton.activity.base.BaseActivity;
 /**
  * Created by dlivotov on 09/02/2016.
  */
-public class EventForceFinishActivity
+public class ForceFinishActivityEvent
 {
     private BaseActivity instanceToKeep;
     private Class activityClassToFinishAllInstancesOf;
 
-    public EventForceFinishActivity()
+    public ForceFinishActivityEvent()
     {
     }
 
-    public EventForceFinishActivity(Class classToFinishAllInstancesOf)
+    public ForceFinishActivityEvent(Class classToFinishAllInstancesOf)
     {
         this.activityClassToFinishAllInstancesOf = classToFinishAllInstancesOf;
     }
 
-    public EventForceFinishActivity keepInstanceOf(BaseActivity instanceToKeep)
+    public ForceFinishActivityEvent keepInstanceOf(BaseActivity instanceToKeep)
     {
         this.instanceToKeep = instanceToKeep;
         return this;
