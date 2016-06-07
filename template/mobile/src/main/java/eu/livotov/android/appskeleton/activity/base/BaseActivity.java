@@ -1,4 +1,4 @@
-package eu.livotov.android.appskeleton.core;
+package eu.livotov.android.appskeleton.activity.base;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,7 @@ import org.greenrobot.eventbus.Subscribe;
 import java.util.ArrayList;
 import java.util.List;
 
+import eu.livotov.android.appskeleton.core.App;
 import eu.livotov.android.appskeleton.event.system.EventForceFinishActivity;
 import eu.livotov.android.appskeleton.event.system.EventGenericError;
 import eu.livotov.android.appskeleton.event.system.EventUITaskProgressUpdate;
@@ -78,7 +79,6 @@ public class BaseActivity extends AppCompatActivity
     @Subscribe
     public void onUITaskProgressUpdate(EventUITaskProgressUpdate task)
     {
-
     }
 
     public void finishAllInstances()
@@ -86,8 +86,8 @@ public class BaseActivity extends AppCompatActivity
         App.postSystemEvent(new EventForceFinishActivity(getClass()));
     }
 
-    public void finishAllInstancesButMe()
+    public void finishAllInstancesButThis()
     {
-        App.postSystemEvent(new EventForceFinishActivity(this));
+        App.postSystemEvent(new EventForceFinishActivity(getClass()).keepInstanceOf(this));
     }
 }

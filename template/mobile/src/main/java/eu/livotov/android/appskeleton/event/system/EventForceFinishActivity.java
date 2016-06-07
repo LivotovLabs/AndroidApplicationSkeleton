@@ -1,6 +1,6 @@
 package eu.livotov.android.appskeleton.event.system;
 
-import eu.livotov.android.appskeleton.core.BaseActivity;
+import eu.livotov.android.appskeleton.activity.base.BaseActivity;
 
 /**
  * Created by dlivotov on 09/02/2016.
@@ -8,26 +8,26 @@ import eu.livotov.android.appskeleton.core.BaseActivity;
 public class EventForceFinishActivity
 {
     private BaseActivity instanceToKeep;
-    private Class activityClassToKillAll;
+    private Class activityClassToFinishAllInstancesOf;
 
     public EventForceFinishActivity()
     {
     }
 
-    public EventForceFinishActivity(Class activityClassToKillAll)
+    public EventForceFinishActivity(Class classToFinishAllInstancesOf)
     {
-        this.activityClassToKillAll = activityClassToKillAll;
+        this.activityClassToFinishAllInstancesOf = classToFinishAllInstancesOf;
     }
 
-    public EventForceFinishActivity(BaseActivity instanceToKeep)
+    public EventForceFinishActivity keepInstanceOf(BaseActivity instanceToKeep)
     {
-        activityClassToKillAll = instanceToKeep.getClass();
         this.instanceToKeep = instanceToKeep;
+        return this;
     }
 
-    public Class getActivityClassToKillAll()
+    public Class getActivityClassToFinishAllInstancesOf()
     {
-        return activityClassToKillAll;
+        return activityClassToFinishAllInstancesOf;
     }
 
     public boolean matches(BaseActivity activity)
@@ -37,7 +37,7 @@ public class EventForceFinishActivity
             return false;
         } else
         {
-            return activityClassToKillAll == null || activityClassToKillAll.equals(activity.getClass());
+            return activityClassToFinishAllInstancesOf == null || activityClassToFinishAllInstancesOf.equals(activity.getClass());
         }
     }
 }
