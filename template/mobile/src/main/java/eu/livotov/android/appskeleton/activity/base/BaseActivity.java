@@ -90,4 +90,5 @@ public class BaseActivity extends AppCompatActivity
     {
         App.postSystemEvent(new EventForceFinishActivity(getClass()).keepInstanceOf(this));
     }
+
 }
