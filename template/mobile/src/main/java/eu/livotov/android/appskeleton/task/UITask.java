@@ -1,8 +1,7 @@
 package eu.livotov.android.appskeleton.task;
 
-import java.util.UUID;
-
 import eu.livotov.android.appskeleton.core.App;
+import eu.livotov.android.appskeleton.event.system.UITaskCompletedEvent;
 import eu.livotov.android.appskeleton.event.system.UITaskProgressUpdateEvent;
 import eu.livotov.android.appskeleton.event.system.UITaskStartedEvent;
 import eu.livotov.labs.android.robotools.os.RTLongTermUITask;
@@ -12,13 +11,9 @@ import eu.livotov.labs.android.robotools.os.RTLongTermUITask;
  */
 public abstract class UITask extends RTLongTermUITask
 {
-    protected String id = UUID.randomUUID().toString();
-    protected float currentProgress;
-
-    public String getId()
-    {
-        return id;
-    }
+    protected float taskProgress;
+    protected String taskTitle;
+    protected String taskDescription;
 
     @Override
     public Object buildProgressEvent(ProgressUpdateType state)
@@ -26,13 +21,13 @@ public abstract class UITask extends RTLongTermUITask
         switch (state)
         {
             case OperationProgressUpdate:
-                return new UITaskProgressUpdateEvent(id, currentProgress);
+                return new UITaskProgressUpdateEvent(this);
 
             case OperationStart:
-                return new UITaskStartedEvent(id);
+                return new UITaskStartedEvent(this);
 
             case OperationStopped:
-                return new EventUITaskCompleted(id);
+                return new UITaskCompletedEvent(this);
 
             default:
                 return null;
@@ -50,5 +45,20 @@ public abstract class UITask extends RTLongTermUITask
         {
             App.postEvent(event);
         }
+    }
+
+    public float getTaskProgress()
+    {
+        return taskProgress;
+    }
+
+    public String getTaskTitle()
+    {
+        return taskTitle;
+    }
+
+    public String getTaskDescription()
+    {
+        return taskDescription;
     }
 }

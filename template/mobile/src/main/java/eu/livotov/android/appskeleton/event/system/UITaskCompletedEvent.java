@@ -5,11 +5,11 @@ import eu.livotov.android.appskeleton.task.UITask;
 /**
  * Created by dlivotov on 09/02/2016.
  */
-public class UITaskStartedEvent
+public class UITaskCompletedEvent
 {
     private final UITask task;
 
-    public UITaskStartedEvent(UITask task)
+    public UITaskCompletedEvent(UITask task)
     {
         this.task = task;
     }

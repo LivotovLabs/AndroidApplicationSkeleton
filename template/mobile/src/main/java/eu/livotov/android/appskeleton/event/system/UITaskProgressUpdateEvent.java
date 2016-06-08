@@ -1,26 +1,21 @@
 package eu.livotov.android.appskeleton.event.system;
 
+import eu.livotov.android.appskeleton.task.UITask;
+
 /**
  * Created by dlivotov on 09/02/2016.
  */
 public class UITaskProgressUpdateEvent
 {
-    private final float progress;
-    private final String id;
+    private final UITask task;
 
-    public UITaskProgressUpdateEvent(String id, float currentProgress)
+    public UITaskProgressUpdateEvent(UITask task)
     {
-        this.id = id;
-        this.progress = currentProgress;
+        this.task = task;
     }
 
-    public float getProgress()
+    public UITask getTask()
     {
-        return progress;
-    }
-
-    public String getId()
-    {
-        return id;
+        return task;
     }
 }
