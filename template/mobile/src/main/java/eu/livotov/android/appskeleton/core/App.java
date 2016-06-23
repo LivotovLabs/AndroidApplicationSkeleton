@@ -1,6 +1,7 @@
 package eu.livotov.android.appskeleton.core;
 
 import android.os.Bundle;
+import android.support.v7.app.AppCompatDelegate;
 
 import eu.inloop.easygcm.GcmListener;
 import eu.livotov.android.appskeleton.core.base.BaseApp;
@@ -15,6 +16,9 @@ public class App extends BaseApp implements GcmListener
     public void onCreate()
     {
         super.onCreate();
+
+        // Allow native VectorDrawable support for pre-lollipops
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
         // Uncomment if you need the GCM support. Also, do not forget to generate your own google-services.json file and add some business code into the two methods below :)
         // EasyGcm.init(this);

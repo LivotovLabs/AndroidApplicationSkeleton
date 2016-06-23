@@ -10,8 +10,8 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".activity.MainActivity"
-            android:label="@string/full_application_name"
+            android:name=".activity.SplashActivity"
+            android:theme="@style/SplashTheme"
             >
 
             <intent-filter>
@@ -20,6 +20,11 @@
             </intent-filter>
 
         </activity>
+
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="@string/full_application_name"
+            />
 
     </application>
 
