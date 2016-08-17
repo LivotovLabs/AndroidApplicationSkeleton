@@ -5,4 +5,7 @@
     <string name="generic_error_dialog_title">Error</string>
     <string name="unexpected_error_generic_text">Unexpected error, please contact application developer for support.</string>
     <string name="generic_dialog_btn_ok">OK</string>
+    <string name="form_error_misssed_phone">Please enter valid phone number</string>
+    <string name="form_error_phone_wrong">Phone number appears to be invalid</string>
+    <string name="form_error_missed_password">Please enter your password</string>
 </resources>

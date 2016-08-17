@@ -16,6 +16,21 @@ def gitSha() {
     return 'git rev-parse --short HEAD'.execute().text.trim()
 }
 
+def gitCommits() {
+    def command = new String[4]
+
+    command[0] = "git"
+    command[1] = "log"
+    command[2] = "--pretty=format:%h - %an, %ar : %s"
+    command[3] = "--since=1.days"
+
+    return new ProcessBuilder(command).start().text
+}
+
+def svnCommits() {
+    return 'svn log -l 10 ../'.execute().text.trim()
+}
+
 android {
     compileSdkVersion androidCompileSdkVersion
     buildToolsVersion androidBuildToolsVersion
@@ -56,6 +71,8 @@ android {
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             resValue "string", "app_revision_number", "${gitSha()}"
+            ext.betaDistributionReleaseNotes = "Release Build v${appVersionMajor}.${appVersionMinor}.${appVersionPatch}\n\n${gitCommits()}"
+            ext.betaDistributionGroupAliases = "group-name"
         }
 
         debug {
@@ -64,6 +81,8 @@ android {
             shrinkResources false
             signingConfig signingConfigs.debug
             resValue "string", "app_revision_number", "${gitSha()}"
+            ext.betaDistributionReleaseNotes = "Debug Build v${appVersionMajor}.${appVersionMinor}.${appVersionPatch}\n\n${gitCommits()}"
+            ext.betaDistributionGroupAliases = "group-name"
         }
     }
 
@@ -115,6 +134,7 @@ dependencies {
      * Support library
      */
     compile supportLibs.appCompat
+    compile supportLibs.support13
     compile supportLibs.annotation
     compile supportLibs.palette
     compile supportLibs.recyclerView
@@ -161,12 +181,14 @@ dependencies {
     /**
      * RoboTools General Utils Library
      */
-    compile 'eu.livotov.labs.android:RoboToolsLibrary:3.0.1'
+    compile 'eu.livotov.labs.android:RoboToolsLibrary:3.0.4.2'
 
     /**
      * REST API Client
      */
-    compile 'com.squareup.retrofit2:retrofit:2.0.2'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.3.0'
 
     /**
      * Image Loader Library
