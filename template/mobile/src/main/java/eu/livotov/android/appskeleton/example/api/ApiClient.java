@@ -78,7 +78,15 @@ public class ApiClient
                 if ("get".equalsIgnoreCase(request.method()))
                 {
                     Response originalResponse = chain.proceed(request);
-                    return originalResponse.newBuilder().removeHeader("Access-Control-Allow-Origin").removeHeader("X-Cache").removeHeader("X-Cache-Hit").removeHeader("Cache-Control").removeHeader("Pragma").header("Cache-Control", http_cache_control_header_in).build();
+
+                    if (originalResponse.isSuccessful())
+                    {
+                        return originalResponse.newBuilder().removeHeader("Access-Control-Allow-Origin").removeHeader("X-Cache").removeHeader("X-Cache-Hit").removeHeader("Cache-Control").removeHeader("Pragma").header("Cache-Control", http_cache_control_header_in).build();
+                    }
+                    else
+                    {
+                        return originalResponse.newBuilder().build();
+                    }
                 }
                 else
                 {

@@ -1,6 +1,7 @@
 package eu.livotov.android.appskeleton.activity.base;
 
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
@@ -169,6 +170,18 @@ public class BaseActivity extends AppCompatActivity
             }
         });
 
+        builder.cancelListener(new DialogInterface.OnCancelListener()
+        {
+            @Override
+            public void onCancel(DialogInterface dialogInterface)
+            {
+                if (callback != null)
+                {
+                    callback.onDialogClosed();
+                }
+            }
+        });
+
         builder.show();
     }
 
@@ -194,6 +207,7 @@ public class BaseActivity extends AppCompatActivity
 
     /**
      * Shows modal dialog question with yes/no buttons
+     *
      * @param message
      * @param callback
      */
@@ -204,6 +218,7 @@ public class BaseActivity extends AppCompatActivity
 
     /**
      * Shows modal dialog question with yes/no buttons
+     *
      * @param title
      * @param message
      * @param callback
@@ -252,10 +267,25 @@ public class BaseActivity extends AppCompatActivity
                 }
             }
         });
+
+        builder.cancelListener(new DialogInterface.OnCancelListener()
+        {
+            @Override
+            public void onCancel(DialogInterface dialogInterface)
+            {
+                if (callback != null)
+                {
+                    callback.onNegativeAnswer();
+                }
+            }
+        });
+
+        builder.show();
     }
 
     /**
      * Shows modal dialog question with yes/no buttons
+     *
      * @param message
      * @param callback
      */
@@ -266,6 +296,7 @@ public class BaseActivity extends AppCompatActivity
 
     /**
      * Shows modal dialog question with yes/no buttons
+     *
      * @param title
      * @param message
      * @param callback
@@ -277,6 +308,7 @@ public class BaseActivity extends AppCompatActivity
 
     /**
      * Shows modal dialog message
+     *
      * @param message
      */
     public void showMessage(@StringRes final int message)
@@ -286,6 +318,7 @@ public class BaseActivity extends AppCompatActivity
 
     /**
      * Shows modal dialog message
+     *
      * @param message
      */
     public void showMessage(final String message)
@@ -295,6 +328,7 @@ public class BaseActivity extends AppCompatActivity
 
     /**
      * Shows modal dialog message
+     *
      * @param message
      * @param callback
      */
@@ -305,6 +339,7 @@ public class BaseActivity extends AppCompatActivity
 
     /**
      * Shows modal dialog message
+     *
      * @param message
      * @param callback
      */
@@ -315,6 +350,7 @@ public class BaseActivity extends AppCompatActivity
 
     /**
      * Shows modal dialog message
+     *
      * @param title
      * @param message
      * @param callback
