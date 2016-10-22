@@ -26,6 +26,24 @@
             android:label="@string/full_application_name"
             />
 
+        <service
+            android:name=".service.AppFirebaseToBackendDeliveryService"
+            android:exported="false"/>
+
+        <service
+            android:name=".service.AppFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".service.AppFirebaseMessageService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
     </application>
 
 </manifest>
