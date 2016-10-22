@@ -169,3 +169,10 @@
 #
 # Protect ZBar
 -keep class net.sourceforge.zbar.** { *; }
+#
+# Moxy MVP
+-keep class **$$PresentersBinder
+-keep class **$$State
+-keep class **$$ParamsHolder
+-keep class **$$ViewStateClassNameProvider
+-keepnames class * extends com.arellomobile.mvp.*

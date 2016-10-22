@@ -4,10 +4,6 @@
  */
 
 ext {
-    supportLibVersion = '23.2.1'
-    wearableSupportVersion = '1.3.0'
-    gmsLibVersion = '9.0.0'
-    multidexLibVersion = '1.0.1'
 
     supportLibs = [
             design      : "com.android.support:design:${supportLibVersion}",
@@ -28,10 +24,24 @@ ext {
             base     : "com.google.android.gms:play-services-base:${gmsLibVersion}",
             gcm      : "com.google.android.gms:play-services-gcm:${gmsLibVersion}",
             location : "com.google.android.gms:play-services-location:${gmsLibVersion}",
+            places   : "com.google.android.gms:play-services-places:${gmsLibVersion}",
             maps     : "com.google.android.gms:play-services-maps:${gmsLibVersion}",
             analytics: "com.google.android.gms:play-services-analytics:${gmsLibVersion}",
             wearable : "com.google.android.gms:play-services-wearable:${gmsLibVersion}",
             all      : "com.google.android.gms:play-services:${gmsLibVersion}",
+    ]
+
+    firebaseLibs = [
+            core     : "com.google.firebase:firebase-core:${firebaseVersion}",
+            database : "com.google.firebase:firebase-database:${firebaseVersion}",
+            storage  : "com.google.firebase:firebase-storage:${firebaseVersion}",
+            crash    : "com.google.firebase:firebase-crash:${firebaseVersion}",
+            auth     : "com.google.firebase:firebase-auth:${firebaseVersion}",
+            messaging: "com.google.firebase:firebase-messaging:${firebaseVersion}",
+            config   : "com.google.firebase:firebase-config:${firebaseVersion}",
+            invites  : "com.google.firebase:firebase-invites:${firebaseVersion}",
+            ads      : "com.google.firebase:firebase-ads:${firebaseVersion}",
+            appindex : "com.google.android.gms:play-services-appindexing:${firebaseVersion}",
     ]
 
 }
