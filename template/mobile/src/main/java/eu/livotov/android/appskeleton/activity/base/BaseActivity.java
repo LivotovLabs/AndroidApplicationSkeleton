@@ -18,19 +18,12 @@ import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.greenrobot.eventbus.Subscribe;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.ButterKnife;
 import eu.livotov.android.appskeleton.R;
 import eu.livotov.android.appskeleton.core.App;
 import eu.livotov.android.appskeleton.event.permission.PermissionGrantEvent;
 import eu.livotov.android.appskeleton.event.system.ForceFinishActivityEvent;
 import eu.livotov.android.appskeleton.event.system.GenericErrorEvent;
-import eu.livotov.android.appskeleton.event.system.UITaskCompletedEvent;
-import eu.livotov.android.appskeleton.event.system.UITaskProgressUpdateEvent;
-import eu.livotov.android.appskeleton.event.system.UITaskStartedEvent;
-import eu.livotov.android.appskeleton.task.UITask;
 
 /**
  * Created by dlivotov on 09/02/2016.
@@ -39,8 +32,6 @@ public class BaseActivity extends AppCompatActivity
 {
     public static final int PERMISSION_ACQUIRE_REQUEST_CODE = 9876;
 
-
-    private List<UITask> runningTasks = new ArrayList<>();
     private MaterialDialog blockingProgressDialog;
     private Object progressDialogSyncLock = new Object();
 
@@ -360,25 +351,16 @@ public class BaseActivity extends AppCompatActivity
         showMessage(getString(title), getString(message), callback);
     }
 
-    @Subscribe
-    public void onUITaskStarted(UITaskStartedEvent event)
+    /**
+     * Shows indeterminate modal progress dialog or updates content on a existing one (if already showing)
+     *
+     * @param cancelable  whether the dialog can be cancelled by a user (back button) or not
+     * @param title       optional dialog title
+     * @param description optional dialog content
+     */
+    public void showBlockingIndeterminateProgressDialog(final boolean cancelable, final String title, final String description)
     {
-        runningTasks.add(event.getTask());
-    }
-
-    @Subscribe
-    public void onUITaskFinished(UITaskCompletedEvent event)
-    {
-        runningTasks.remove(event.getTask());
-    }
-
-    @Subscribe
-    public void onUITaskProgressUpdate(UITaskProgressUpdateEvent event)
-    {
-        if (runningTasks.contains(event.getTask()))
-        {
-            showBlockingProgressDialog(false, event.getTask().getTaskTitle(), event.getTask().getTaskDescription(), event.getTask().getTaskProgress());
-        }
+        showBlockingProgressDialog(cancelable, title, description, -1);
     }
 
     /**
@@ -421,18 +403,6 @@ public class BaseActivity extends AppCompatActivity
                 blockingProgressDialog.show();
             }
         }
-    }
-
-    /**
-     * Shows indeterminate modal progress dialog or updates content on a existing one (if already showing)
-     *
-     * @param cancelable  whether the dialog can be cancelled by a user (back button) or not
-     * @param title       optional dialog title
-     * @param description optional dialog content
-     */
-    public void showBlockingIndeterminateProgressDialog(final boolean cancelable, final String title, final String description)
-    {
-        showBlockingProgressDialog(cancelable, title, description, -1);
     }
 
     /**

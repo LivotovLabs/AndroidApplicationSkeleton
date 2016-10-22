@@ -1,15 +1,12 @@
 package eu.livotov.android.appskeleton.util;
 
 import android.Manifest;
-import android.content.Context;
 import android.location.Location;
-import android.location.LocationManager;
-
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GoogleApiAvailability;
+import android.support.annotation.RequiresPermission;
 
 import eu.livotov.android.appskeleton.core.App;
 import eu.livotov.android.appskeleton.event.location.LocationChangedEvent;
+import eu.livotov.labs.android.robotools.location.RTLocation;
 import pl.charmas.android.reactivelocation.ReactiveLocationProvider;
 import rx.functions.Action1;
 
@@ -19,17 +16,18 @@ import rx.functions.Action1;
 
 public class LocationUtil
 {
+    @RequiresPermission(anyOf = {Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION})
     public static LocationRequestResult requestLocation()
     {
         if (!App.checkPermissions(Manifest.permission.ACCESS_COARSE_LOCATION))
         {
             return LocationRequestResult.NoPermission;
         }
-        else if (!isLocationEnabled())
+        else if (!RTLocation.isLocationEnabled(App.getContext()))
         {
             return LocationRequestResult.NoLocationEnabled;
         }
-        else if (!areGoogleServicesPresent())
+        else if (!RTLocation.areGoogleServicesPresent(App.getContext()))
         {
             return LocationRequestResult.NoGoogleServices;
         }
@@ -45,47 +43,6 @@ public class LocationUtil
                 }
             });
             return LocationRequestResult.Enqueued;
-        }
-    }
-
-    public static boolean isLocationEnabled()
-    {
-        LocationManager lm = null;
-        boolean gps_enabled = false;
-        boolean network_enabled = false;
-
-        if (lm == null)
-        {
-            lm = (LocationManager) App.getContext().getSystemService(Context.LOCATION_SERVICE);
-        }
-        try
-        {
-            gps_enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
-        }
-        catch (Exception ignored)
-        {
-        }
-
-        try
-        {
-            network_enabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-        }
-        catch (Exception ignored)
-        {
-        }
-
-        return gps_enabled || network_enabled;
-    }
-
-    public static boolean areGoogleServicesPresent()
-    {
-        try
-        {
-            return GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(App.getContext()) == ConnectionResult.SUCCESS;
-        }
-        catch (Throwable err)
-        {
-            return false;
         }
     }
 
