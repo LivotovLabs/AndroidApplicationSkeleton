@@ -8,13 +8,14 @@ import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.arellomobile.mvp.MvpAppCompatActivity;
 
 import org.greenrobot.eventbus.Subscribe;
 
@@ -28,7 +29,7 @@ import eu.livotov.android.appskeleton.event.system.GenericErrorEvent;
 /**
  * Created by dlivotov on 09/02/2016.
  */
-public class BaseActivity extends AppCompatActivity
+public class BaseActivity extends MvpAppCompatActivity
 {
     public static final int PERMISSION_ACQUIRE_REQUEST_CODE = 9876;
 
@@ -39,7 +40,14 @@ public class BaseActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        App.subscribeForSystemEvents(this);
+        App.subscribe(this);
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        App.unsubscribe(this);
+        super.onDestroy();
     }
 
     @Override
@@ -63,25 +71,47 @@ public class BaseActivity extends AppCompatActivity
         ButterKnife.bind(this);
     }
 
-    @Override
-    protected void onDestroy()
+    /**
+     * Finishes the current activity and also displays a short toast message at the same time.
+     *
+     * @param text text to show as toast
+     */
+    public void finishWithMessage(@StringRes int text)
     {
-        App.unsubscribeFromSystemEvents(this);
-        super.onDestroy();
+        finishWithMessage(getString(text));
     }
 
-    @Override
-    protected void onPause()
+    /**
+     * Finishes the current activity and also displays a short toast message at the same time.
+     *
+     * @param text text to show as toast
+     */
+    public void finishWithMessage(String text)
     {
-        App.unsubscribe(this);
-        super.onPause();
+        Toast.makeText(App.getContext(), text, Toast.LENGTH_SHORT).show();
+        finish();
     }
 
-    @Override
-    protected void onResume()
+    /**
+     * Shows a toast for this activity.
+     *
+     * @param text      text to show as toast
+     * @param longToast show a tost message with a longer lifetime
+     */
+    public void showToast(@StringRes int text, boolean longToast)
     {
-        super.onResume();
-        App.subscribe(this);
+        showToast(getString(text), longToast);
+    }
+
+    /**
+     * Shows a toast for this activity.
+     *
+     * @param text      text to show as toast
+     * @param longToast show a tost message with a longer lifetime
+     */
+    public void showToast(String text, boolean longToast)
+    {
+        Toast.makeText(this, text, longToast ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -473,19 +503,34 @@ public class BaseActivity extends AppCompatActivity
     }
 
     /**
-     * Finishes all (even not visible ones) activities of this activity class, including this activity too.
+     * Provides an object to identify the group activities.
+     *
+     * @return any object as tag identifier
      */
-    public void finishAllInstances()
+    public Object getTag()
     {
-        App.postSystemEvent(new ForceFinishActivityEvent(getClass()));
+        return this;
     }
 
     /**
-     * Finishes all (even not visible ones) activities of this activity class, excluding this activity.
+     * Force finsih all (even not visible ones) activities of this activity class, including this (self) instance too.
+     */
+    public void finishAllInstances()
+    {
+        App.postEvent(new ForceFinishActivityEvent(getClass()));
+    }
+
+    /**
+     * Force finish all (even not visible ones) activities of this activity class, excluding this (self) instance.
      */
     public void finishAllInstancesButThis()
     {
-        App.postSystemEvent(new ForceFinishActivityEvent(getClass()).keepInstanceOf(this));
+        App.postEvent(new ForceFinishActivityEvent(getClass()).keepInstanceOf(this));
+    }
+
+    public void finishAllInstancesByTag(final Object tag)
+    {
+        App.postEvent(new ForceFinishActivityEvent().withTag(tag));
     }
 
     public interface DialogCloseCallback

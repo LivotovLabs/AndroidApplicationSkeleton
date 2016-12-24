@@ -28,6 +28,7 @@ ext {
             maps     : "com.google.android.gms:play-services-maps:${gmsLibVersion}",
             analytics: "com.google.android.gms:play-services-analytics:${gmsLibVersion}",
             wearable : "com.google.android.gms:play-services-wearable:${gmsLibVersion}",
+            auth     : "com.google.android.gms:play-services-auth:${gmsLibVersion}",
             all      : "com.google.android.gms:play-services:${gmsLibVersion}",
     ]
 

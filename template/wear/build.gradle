@@ -24,7 +24,7 @@ android {
         minSdkVersion androidMinSdkVersion
         targetSdkVersion androidTargetSdkVersion
         versionCode appVersionMajor * 10000 + appVersionMinor * 1000 + appVersionPatch * 100 + appVersionBuild
-        versionName "${appVersionMajor}.${appVersionMinor}.${appVersionPatch}-W, build ${gitSha()}"
+        versionName "${appVersionPrefix}${appVersionMajor}.${appVersionMinor}.${appVersionPatch}${appVersionSuffix}, build W-${gitSha()}"
         multiDexEnabled false
     }
 

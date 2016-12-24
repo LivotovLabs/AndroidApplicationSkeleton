@@ -9,6 +9,7 @@ public class ForceFinishActivityEvent
 {
     private BaseActivity instanceToKeep;
     private Class activityClassToFinishAllInstancesOf;
+    private Object tag;
 
     public ForceFinishActivityEvent()
     {
@@ -25,6 +26,12 @@ public class ForceFinishActivityEvent
         return this;
     }
 
+    public ForceFinishActivityEvent withTag(Object tag)
+    {
+        this.tag = tag;
+        return this;
+    }
+
     public Class getActivityClassToFinishAllInstancesOf()
     {
         return activityClassToFinishAllInstancesOf;
@@ -32,12 +39,21 @@ public class ForceFinishActivityEvent
 
     public boolean matches(BaseActivity activity)
     {
-        if (instanceToKeep !=null && instanceToKeep == activity)
+        if (instanceToKeep != null && instanceToKeep == activity)
         {
             return false;
-        } else
+        }
+        else
         {
-            return activityClassToFinishAllInstancesOf == null || activityClassToFinishAllInstancesOf.equals(activity.getClass());
+            if (tag != null)
+            {
+                return activity.getTag() != null && activity.getTag().equals(tag);
+            }
+            else
+            {
+                return activityClassToFinishAllInstancesOf == null || activityClassToFinishAllInstancesOf.equals(activity.getClass());
+            }
         }
     }
+
 }

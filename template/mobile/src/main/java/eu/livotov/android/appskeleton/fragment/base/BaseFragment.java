@@ -1,6 +1,5 @@
 package eu.livotov.android.appskeleton.fragment.base;
 
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,6 +9,7 @@ import android.view.View;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.arellomobile.mvp.MvpFragment;
 
 import org.greenrobot.eventbus.Subscribe;
 
@@ -17,14 +17,13 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import eu.livotov.android.appskeleton.R;
 import eu.livotov.android.appskeleton.activity.base.BaseActivity;
-import eu.livotov.android.appskeleton.core.App;
 import eu.livotov.android.appskeleton.event.stub.DummyEvent;
 
 /**
  * Created by dlivotov on 07/06/2016.
  */
 
-public class BaseFragment extends Fragment
+public class BaseFragment extends MvpFragment
 {
     private Unbinder unbinder;
 
@@ -33,7 +32,6 @@ public class BaseFragment extends Fragment
     {
         super.onViewCreated(view, savedInstanceState);
         unbinder = ButterKnife.bind(this, view);
-        App.subscribe(this);
     }
 
     @Override
@@ -44,7 +42,6 @@ public class BaseFragment extends Fragment
             unbinder.unbind();
         }
 
-        App.unsubscribe(this);
         super.onDestroyView();
     }
 

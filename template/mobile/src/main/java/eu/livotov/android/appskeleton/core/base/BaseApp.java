@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.support.annotation.Nullable;
 import android.support.multidex.MultiDex;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -16,7 +17,6 @@ import java.util.List;
 import eu.livotov.android.appskeleton.activity.base.BaseActivity;
 import eu.livotov.android.appskeleton.core.App;
 import eu.livotov.android.appskeleton.event.permission.PermissionGrantEvent;
-import eu.livotov.android.appskeleton.util.AppSettings;
 import eu.livotov.labs.android.robotools.app.RTApp;
 
 /**
@@ -24,30 +24,12 @@ import eu.livotov.labs.android.robotools.app.RTApp;
  */
 public class BaseApp extends RTApp
 {
-    protected AppSettings settings;
-    protected EventBus systemEventBus;
-
-    public static AppSettings getSettings()
-    {
-        return ((BaseApp) getInstance()).settings;
-    }
-
     public static void postStickyEvent(Object event)
     {
         EventBus.getDefault().postSticky(event);
     }
 
-    public static void postSystemEvent(Object event)
-    {
-        ((BaseApp) getInstance()).systemEventBus.post(event);
-    }
-
-    public static void postSystemStickyEvent(Object event)
-    {
-        ((BaseApp) getInstance()).systemEventBus.postSticky(event);
-    }
-
-    public static synchronized void subscribe(Object eventsListener)
+    public static void subscribe(Object eventsListener)
     {
         final EventBus bus = EventBus.getDefault();
         if (!bus.isRegistered(eventsListener))
@@ -56,27 +38,9 @@ public class BaseApp extends RTApp
         }
     }
 
-    public static synchronized void unsubscribe(Object eventListener)
+    public static void unsubscribe(Object eventListener)
     {
         final EventBus bus = EventBus.getDefault();
-        if (bus.isRegistered(eventListener))
-        {
-            bus.unregister(eventListener);
-        }
-    }
-
-    public static synchronized void subscribeForSystemEvents(Object eventsListener)
-    {
-        final EventBus bus = ((BaseApp) getInstance()).systemEventBus;
-        if (!bus.isRegistered(eventsListener))
-        {
-            bus.register(eventsListener);
-        }
-    }
-
-    public static synchronized void unsubscribeFromSystemEvents(Object eventListener)
-    {
-        final EventBus bus = ((BaseApp) getInstance()).systemEventBus;
         if (bus.isRegistered(eventListener))
         {
             bus.unregister(eventListener);
@@ -164,6 +128,19 @@ public class BaseApp extends RTApp
         }
     }
 
+    @Nullable
+    public static String getVersionName()
+    {
+        try
+        {
+            return App.getContext().getPackageManager().getPackageInfo(App.getContext().getPackageName(), 0).versionName;
+        }
+        catch (PackageManager.NameNotFoundException e)
+        {
+            return null;
+        }
+    }
+
     @Override
     public void onCreate()
     {
@@ -173,8 +150,6 @@ public class BaseApp extends RTApp
 
     private void init()
     {
-        settings = new AppSettings(this);
-        systemEventBus = EventBus.builder().eventInheritance(false).logNoSubscriberMessages(false).sendNoSubscriberEvent(false).throwSubscriberException(false).logSubscriberExceptions(true).build();
         EventBus.builder().eventInheritance(false).logNoSubscriberMessages(false).sendNoSubscriberEvent(false).throwSubscriberException(false).logSubscriberExceptions(true).installDefaultEventBus();
     }
 
