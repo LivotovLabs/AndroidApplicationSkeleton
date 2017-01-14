@@ -1,7 +1,7 @@
 #!/bin/bash
 
-TMPL_PACKAGE="appskeleton"
-TMPL_PACKAGE_TLD="$TMPL_PACKAGE"
+TMPL_PACKAGE="eu.livotov.labs.androidappskeleton"
+TMPL_PACKAGE_TLD="eu"
 TMPL_NAME="LLAndroidApplicationTemplate"
 
 echo "Livotov Labs > Android Project Template v1.0"
