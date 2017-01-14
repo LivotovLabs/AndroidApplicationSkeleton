@@ -8,7 +8,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:000000000000:android:000000000000",
         "android_client_info": {
-          "package_name": "appskeleton"
+          "package_name": "eu.livotov.labs.androidappskeleton"
         }
       },
       "oauth_client": [],

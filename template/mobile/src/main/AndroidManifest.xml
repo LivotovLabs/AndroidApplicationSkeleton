@@ -1,4 +1,4 @@
-<manifest package="appskeleton"
+<manifest package="eu.livotov.labs.androidappskeleton"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
