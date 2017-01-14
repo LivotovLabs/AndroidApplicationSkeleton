@@ -39,5 +39,5 @@ ext {
     /**
      * App Identifier
      */
-    appId = 'eu.livotov.android.appskeleton'
+    appId = 'appskeleton'
 }

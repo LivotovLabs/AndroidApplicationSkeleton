@@ -1,19 +1,12 @@
 # ================================================================================================
-# IMPORTANT !!!
-# Project ackage sensitive part - replace to your actual package name in order to get the rules
-# below working !
-# ================================================================================================
-#
 # Keep data package where we store any orm entities, dto's and other pojos
--keep class eu.livotov.android.appskeleton.data.** { *; }
--keepclassmembers eu.livotov.android.appskeleton.data.** { *; }
--keep interface eu.livotov.android.appskeleton.data.** { *; }
--keepclassmembers interface eu.livotov.android.appskeleton.data.** { *; }
--keeppackagenames eu.livotov.android.appskeleton.data.**
+-keep class appskeleton.data.** { *; }
+-keepclassmembers appskeleton.data.** { *; }
+-keep interface appskeleton.data.** { *; }
+-keepclassmembers interface appskeleton.data.** { *; }
+-keeppackagenames appskeleton.data.**
 #
 # ================================================================================================
-
-
 
 
 # ================================================================================================
