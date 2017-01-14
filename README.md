@@ -3,8 +3,6 @@ An application template to bootstrap your next Android app instantly.
 
 ## The Lazy Idea
 
-The main idea of this project is that's I'm very lazy :) 
-
 Bootstrapping a new app from scratch is a kind of pain - you have to create a base gradle project,
 setup commonly used dependencies, write commonly used code such as App class, base activities, etc,etc,
 plug-in event bus, plug-in themes, perform some initial material design tweaks and a lot of other stuff and
