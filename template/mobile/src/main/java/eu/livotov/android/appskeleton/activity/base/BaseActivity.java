@@ -1,10 +1,10 @@
 package eu.livotov.android.appskeleton.activity.base;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
@@ -25,6 +25,7 @@ import eu.livotov.android.appskeleton.core.App;
 import eu.livotov.android.appskeleton.event.permission.PermissionGrantEvent;
 import eu.livotov.android.appskeleton.event.system.ForceFinishActivityEvent;
 import eu.livotov.android.appskeleton.event.system.GenericErrorEvent;
+import eu.livotov.android.appskeleton.fragment.base.BaseFragment;
 
 /**
  * Created by dlivotov on 09/02/2016.
@@ -206,24 +207,62 @@ public class BaseActivity extends MvpAppCompatActivity
         builder.show();
     }
 
-    public void addFragment(final Fragment fragment)
+    protected <F extends Fragment> F setFragment(Bundle savedInstanceState, F fragment)
     {
-        addFragment(fragment, android.R.id.content);
+        if (savedInstanceState == null)
+        {
+            getFragmentManager().beginTransaction().replace(android.R.id.content, fragment, fragment.getClass().getCanonicalName()).disallowAddToBackStack().commitAllowingStateLoss();
+            return fragment;
+        }
+        else
+        {
+            return (F) getFragmentManager().findFragmentByTag(fragment.getClass().getCanonicalName());
+        }
     }
 
-    public void addFragment(final Fragment fragment, @IdRes int contentViewId)
+    protected void addFragment(BaseFragment fragment)
     {
-        getFragmentManager().beginTransaction().add(contentViewId, fragment).addToBackStack(null).commit();
+        getFragmentManager().beginTransaction().replace(android.R.id.content, fragment).addToBackStack(null).commitAllowingStateLoss();
     }
 
-    public void setFragment(final Fragment fragment)
+    protected Fragment getFragment()
     {
-        setFragment(fragment, android.R.id.content);
+        return getFragmentManager().findFragmentById(android.R.id.content);
     }
 
-    public void setFragment(final Fragment fragment, @IdRes int contentViewId)
+    protected <F extends Fragment> F getFragment(Class<F> cls)
     {
-        getFragmentManager().beginTransaction().replace(contentViewId, fragment).commit();
+        return (F) getFragmentManager().findFragmentByTag(cls.getCanonicalName());
+    }
+
+    protected void removeFragment()
+    {
+        try
+        {
+            Fragment fragment = getFragmentManager().findFragmentById(android.R.id.content);
+
+            if (fragment != null)
+            {
+                getFragmentManager().beginTransaction().remove(fragment).commitAllowingStateLoss();
+            }
+        }
+        catch (Throwable ignored)
+        {
+        }
+    }
+
+    public void back()
+    {
+        final FragmentManager mgr = getFragmentManager();
+
+        if (mgr.getBackStackEntryCount() > 0)
+        {
+            mgr.popBackStack();
+        }
+        else
+        {
+            finish();
+        }
     }
 
     /**

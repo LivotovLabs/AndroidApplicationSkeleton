@@ -8,7 +8,7 @@ ext {
     /**
      * Build Tools Versions
      */
-    androidGradlePluginVersion = '2.3.0-beta1'
+    androidGradlePluginVersion = '2.3.0-beta2'
     androidBuildToolsVersion = '25.0.0'
     androidTargetSdkVersion = 25
     androidCompileSdkVersion = 25

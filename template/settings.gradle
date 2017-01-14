@@ -1,1 +1,3 @@
 include ':mobile', ':wear'
+
+rootProject.name = 'Android Application Template'
