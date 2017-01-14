@@ -27,7 +27,7 @@ This project template contains:
 
 ### Initializing your new App
 - Clone or download this repo
-- When you need to start a new app project, simply run the bootstrap script: __./mkproject.sh <PATH_TO_NEW_APP_PROJECT_FOLDER>__
+- When you need to start a new app project, simply run the bootstrap script: __./mkproject.sh PATH_TO_NEW_APP_PROJECT_FOLDER __
 - Answer to a couple of questions
 - Wait till bootstrap process is completed
 - Open __PATH_TO_NEW_APP_PROJECT_FOLDER__ in Android Studio - it is ready to run, simple!
