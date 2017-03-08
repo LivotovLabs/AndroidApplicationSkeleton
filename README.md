@@ -20,8 +20,7 @@ So:
 - Wait till bootstrap process is completed
 - Open __PATH-TO-NEW-APP-PROJECT-FOLDER__ in Android Studio - it is ready to run, simple!
 
-Even if this template contains things you don't not need in your next app, it is always easier and faster to delete something unneeded rather than
-adding and configuring, so simply inspect the build.gradle file and remove the stuff you don't need :)
+Even if this template contains things you don't not need in your next app, it is always easier and faster to delete something unneeded rather than add and configure the everyday libs, so simply inspect the build.gradle file and remove the stuff you don't need :)
 
 
 This project template contains:
@@ -42,6 +41,6 @@ This project template contains:
 
 
 ## Notes
-The __mkproject.sh__ script was tested in OSX only. Although this is a bash script, some (most likely the "sed") commands args may vary between various unix flavors, you might need to adjust it.
+The __mkproject.sh__ script was tested in OSX only. Although this is a bash script, some (most likely the "sed") commands args may vary between various unix flavors, you might need to adjust them then.
 
-Im not a bash scripting guy, so the bootstrapping script may be not too optimal/correct, would be happy to receive fixes/updates for it, feel free to pull-request!
+Im not a bash scripting guy, so the bootstrapping script may be not too optimal/correct (sure it is written badly :), would be happy to receive enhancements/fixes/updates for it, feel free to pull-request!
