@@ -1,13 +1,16 @@
 <manifest package="eu.livotov.labs.androidappskeleton"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+          xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools">
 
     <application
         android:name=".core.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/full_application_name"
+        android:label="@string/app_full_application_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:label"
+        >
 
         <activity
             android:name=".activity.SplashActivity"
@@ -23,7 +26,7 @@
 
         <activity
             android:name=".activity.MainActivity"
-            android:label="@string/full_application_name"
+            android:label="@string/app_full_application_name"
             />
 
         <service

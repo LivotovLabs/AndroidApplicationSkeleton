@@ -2,17 +2,22 @@ package eu.livotov.labs.androidappskeleton.activity;
 
 import android.os.Bundle;
 
+import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.mikepenz.materialize.MaterializeBuilder;
 
 import eu.livotov.labs.androidappskeleton.R;
 import eu.livotov.labs.androidappskeleton.activity.base.BaseActivity;
+import eu.livotov.labs.androidappskeleton.example.mvp.TestPresenter;
 
 /**
  * Created by dlivotov on 07/06/2016.
  */
 
-public class MainActivity extends BaseActivity
+public class MainActivity extends BaseActivity implements TestPresenter.View
 {
+    @InjectPresenter
+    TestPresenter testPresenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -25,6 +30,12 @@ public class MainActivity extends BaseActivity
     protected void onResume()
     {
         super.onResume();
-        showMessage("Hello !");
+        testPresenter.loadTestData();
+    }
+
+    @Override
+    public void showTestData(String s)
+    {
+        showMessage("Hello Template App\n" + s);
     }
 }

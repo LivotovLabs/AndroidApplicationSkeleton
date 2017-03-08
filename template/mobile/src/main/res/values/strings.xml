@@ -1,5 +1,5 @@
 <resources>
-    <string name="full_application_name">LLAndroidApplicationTemplate</string>
+    <string name="app_full_application_name">LLAndroidApplicationTemplate</string>
     <string name="generic_dialog_btn_yes">Yes</string>
     <string name="generic_dialog_btn_no">No</string>
     <string name="generic_error_dialog_title">Error</string>
