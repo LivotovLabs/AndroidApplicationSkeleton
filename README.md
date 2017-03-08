@@ -12,16 +12,13 @@ Thus the main goal of this template is to speed up bootstrapping new android app
 
 ## Quick Start
 
-So:
-
 - Clone or download this repo
 - When you need to start a new app project, simply run the bootstrap script: __./mkproject.sh PATH-TO-NEW-APP-PROJECT-FOLDER__
 - Answer to a couple of questions
 - Wait till bootstrap process is completed
-- Open __PATH-TO-NEW-APP-PROJECT-FOLDER__ in Android Studio - it is ready to run, simple!
+- Open __PATH-TO-NEW-APP-PROJECT-FOLDER__ in Android Studio - it will recognize gradle-based project and import it. 
 
-Even if this template contains things you don't not need in your next app, it is always easier and faster to delete something unneeded rather than add and configure the everyday libs, so simply inspect the build.gradle file and remove the stuff you don't need :)
-
+The bootstrap script will copy the template files to your new project folder, set your application ID to gradle file and rename the Java packages accordingly. Once finished you should have the complete android app project ready to run - simply start coding your actual app from now on.
 
 This project template contains:
 
@@ -31,8 +28,12 @@ This project template contains:
 - Pre-configured app signing infrastructure
 - Examples package from where you can copy-paste the code
 
+Even if you find this template contains things you don't not need in your next app, it is always easier and faster to delete something unneeded rather than add and configure the everyday libs, so simply inspect the build.gradle file and remove the stuff you don't need :)
+
+
 ### Fine-tune the project
 
+- Replace dummy mobile/google-services.json with your actual one (download it from firebase console)
 - Generate the keystore for your app, look at config/signing.gradle to attach it to your project for automatic signing
 - Explore config/deps.gradle and mobile/build.gradle to remove the unneeded deps, add your specific ones, etc
 - Explore config/versions.gradle to see/adjust version numbers
