@@ -36,6 +36,6 @@ public class MainActivity extends BaseActivity implements TestPresenter.View
     @Override
     public void showTestData(String s)
     {
-        showMessage("Hello Template App\n" + s);
+        showMessage("Hello From Template App !\n\n" + s);
     }
 }
