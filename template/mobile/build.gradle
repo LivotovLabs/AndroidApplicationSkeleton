@@ -87,6 +87,7 @@ android {
 
     productFlavors {
         development {
+            minSdkVersion 21 // To speed up the build and eliminate ART dex splitting
         }
 
         production {
