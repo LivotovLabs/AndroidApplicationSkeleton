@@ -9,7 +9,7 @@ ext {
      * Build Tools Versions
      */
     androidGradlePluginVersion = '2.3.0'
-    androidBuildToolsVersion = '25.0.0'
+    androidBuildToolsVersion = '25.0.3'
     androidTargetSdkVersion = 25
     androidCompileSdkVersion = 25
     androidMinSdkVersion = 19
@@ -18,10 +18,10 @@ ext {
     /**
      * System Libraries Versions
      */
-    supportLibVersion = '25.2.0'
+    supportLibVersion = '25.3.1'
     wearableSupportVersion = '2.0.0'
     gmsLibVersion = '10.2.0'
-    firebaseVersion = '10.2.0'
+    firebaseVersion = '10.2.4'
     multidexLibVersion = '1.0.1'
 
     /**

@@ -166,7 +166,7 @@ dependencies {
     /**
      * Reactive Extensions to JVM
      */
-    compile "io.reactivex.rxjava2:rxjava:2.0.7"
+    compile "io.reactivex.rxjava2:rxjava:2.1.0"
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
 
     /**
@@ -205,7 +205,7 @@ dependencies {
     /**
      * Reactive Extension To Google Location Services
      */
-    compile 'com.patloew.rxlocation:rxlocation:1.0.1'
+    compile 'com.patloew.rxlocation:rxlocation:1.0.3'
 
     /**
      * Annotation-based Processing Tools
@@ -220,39 +220,46 @@ dependencies {
     compile 'org.parceler:parceler-api:1.1.6'
     apt 'org.parceler:parceler:1.1.6'
 
-    compile 'com.github.hotchemi:permissionsdispatcher:2.3.1'
-    apt 'com.github.hotchemi:permissionsdispatcher-processor:2.3.1'
+    compile 'com.github.hotchemi:permissionsdispatcher:2.4.0'
+    apt 'com.github.hotchemi:permissionsdispatcher-processor:2.4.0'
+    apt 'com.github.AleksanderMielczarek:AndroidAnnotationsPermissionsDispatcherPlugin:0.1.0'
 
     /**
      * MVP Support
      */
-    compile 'com.arello-mobile:moxy:1.4.5'
-    compile 'com.arello-mobile:moxy-android:1.4.5'
-    compile 'com.arello-mobile:moxy-app-compat:1.4.5'
-    apt 'com.arello-mobile:moxy-compiler:1.4.5'
+    compile 'com.arello-mobile:moxy:1.5.2'
+    compile 'com.arello-mobile:moxy-android:1.5.2'
+    compile 'com.arello-mobile:moxy-app-compat:1.5.2'
+    apt 'com.arello-mobile:moxy-compiler:1.5.2'
 
     /**
      * Material Design Support and low-level UI libs
      */
     compile 'com.dmitrymalkovich.android:material-design-dimens:1.4'
     compile 'com.mikepenz:materialize:1.0.1'
-    compile 'com.mikepenz:materialdrawer:5.8.2'
-    compile 'com.roughike:bottom-bar:2.1.1'
-    compile 'eu.davidea:flexible-adapter:5.0.0-rc1'
+    compile 'com.mikepenz:materialdrawer:5.9.1'
+    compile 'com.roughike:bottom-bar:2.3.1'
+    compile 'eu.davidea:flexible-adapter:5.0.0-rc1' // Flexible and easy to use RecyclerView adapter -> https://github.com/davideas/FlexibleAdapter
     compile "com.daimajia.swipelayout:library:1.2.0"
-    compile "com.andkulikov:transitionseverywhere:1.7.0"
+    compile "com.andkulikov:transitionseverywhere:1.7.2"
 
     /**
      * UI Dialogs
      */
     compile 'com.kbeanie:multipicker:1.1.31'
-    compile 'com.afollestad.material-dialogs:core:0.9.3.0'
-    compile 'com.wdullaer:materialdatetimepicker:3.1.3'
+    compile 'com.afollestad.material-dialogs:core:0.9.4.4' // All kind of material dialogs -> https://github.com/afollestad/material-dialogs
+    compile 'com.wdullaer:materialdatetimepicker:3.2.0' // Material Date & Time pickers -> https://github.com/wdullaer/MaterialDateTimePicker
+
+    /**
+     * Image Widgets
+     */
+    compile 'com.theartofdev.edmodo:android-image-cropper:2.4.3' // Simple pick and crop images -> https://github.com/ArthurHub/Android-Image-Cropper/wiki
+    compile 'com.davemorrissey.labs:subsampling-scale-image-view:3.6.0' // Image view to show unlimited size images without pressing the RAM -> https://github.com/davemorrissey/subsampling-scale-image-view
 
     /**
      * UI Widgets
      */
-    compile 'com.rengwuxian.materialedittext:library:2.1.4'
+    compile 'com.rengwuxian.materialedittext:library:2.1.4' // Material EditText widget -> https://github.com/rengwuxian/MaterialEditText
 
     /**
      * ===============================================================

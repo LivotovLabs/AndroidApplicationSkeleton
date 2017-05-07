@@ -1,22 +1,17 @@
 package eu.livotov.labs.androidappskeleton.core;
 
 import android.support.v7.app.AppCompatDelegate;
-
+import com.arellomobile.mvp.MvpFacade;
 import com.jakewharton.picasso.OkHttp3Downloader;
 import com.squareup.picasso.Picasso;
-
-import java.io.File;
-import java.io.IOException;
-
 import eu.livotov.labs.android.robotools.network.RTNetwork;
 import eu.livotov.labs.androidappskeleton.core.base.BaseApp;
 import eu.livotov.labs.androidappskeleton.util.AppSettings;
-import okhttp3.Cache;
-import okhttp3.Interceptor;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+import okhttp3.*;
 import okhttp3.logging.HttpLoggingInterceptor;
+
+import java.io.File;
+import java.io.IOException;
 
 public class App extends BaseApp
 {
@@ -34,6 +29,8 @@ public class App extends BaseApp
 
         // Allow native VectorDrawable support for pre-lollipops
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+
+        MvpFacade.init();
 
         // Init settings object
         settings = new AppSettings(this);
