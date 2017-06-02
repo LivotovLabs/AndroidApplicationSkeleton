@@ -7,8 +7,14 @@ buildscript {
     }
 }
 
+repositories {
+    maven { url "http://objectbox.net/beta-repo/" }
+}
+
+
 apply plugin: 'com.android.application'
 apply plugin: 'com.jakewharton.hugo'
+apply plugin: 'io.objectbox'
 apply plugin: 'com.neenbedankt.android-apt'
 
 def gitSha() {
@@ -163,6 +169,11 @@ dependencies {
     compile firebaseLibs.core
     compile firebaseLibs.messaging
 
+    /**
+     * In-app DB
+     */
+    compile 'io.objectbox:objectbox-android:0.9.12'
+    
     /**
      * Reactive Extensions to JVM
      */

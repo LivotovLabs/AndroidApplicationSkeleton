@@ -7,6 +7,7 @@ buildscript {
 
     repositories {
         jcenter()
+        maven { url "http://objectbox.net/beta-repo/" }
     }
 
     dependencies {
@@ -14,6 +15,7 @@ buildscript {
         classpath "com.google.gms:google-services:$googleServicesPluginVersion"
         classpath 'com.jakewharton.hugo:hugo-plugin:1.2.1'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        classpath 'io.objectbox:objectbox-gradle-plugin:0.9.12.1'
     }
 }
 
