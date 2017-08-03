@@ -32,10 +32,6 @@ def gitCommits() {
     return new ProcessBuilder(command).start().text
 }
 
-def svnCommits() {
-    return 'svn log -l 10 ../'.execute().text.trim()
-}
-
 android {
     compileSdkVersion androidCompileSdkVersion
     buildToolsVersion androidBuildToolsVersion
@@ -172,7 +168,7 @@ dependencies {
     /**
      * In-app DB
      */
-    compile 'io.objectbox:objectbox-android:0.9.12'
+    compile 'io.objectbox:objectbox-android:0.9.13'
     
     /**
      * Reactive Extensions to JVM
@@ -221,8 +217,8 @@ dependencies {
     /**
      * Annotation-based Processing Tools
      */
-    compile 'com.jakewharton:butterknife:8.5.1'
-    apt 'com.jakewharton:butterknife-compiler:8.5.1'
+    compile 'com.jakewharton:butterknife:8.7.0'
+    apt 'com.jakewharton:butterknife-compiler:8.7.0'
 
     compile 'in.workarounds.bundler:bundler-annotations:0.1.1'
     compile 'in.workarounds.bundler:bundler-parceler:0.1.1'
@@ -238,10 +234,10 @@ dependencies {
     /**
      * MVP Support
      */
-    compile 'com.arello-mobile:moxy:1.5.2'
-    compile 'com.arello-mobile:moxy-android:1.5.2'
-    compile 'com.arello-mobile:moxy-app-compat:1.5.2'
-    apt 'com.arello-mobile:moxy-compiler:1.5.2'
+    compile 'com.arello-mobile:moxy:1.5.3'
+    compile 'com.arello-mobile:moxy-android:1.5.3'
+    compile 'com.arello-mobile:moxy-app-compat:1.5.3'
+    apt 'com.arello-mobile:moxy-compiler:1.5.3'
 
     /**
      * Material Design Support and low-level UI libs
@@ -271,6 +267,7 @@ dependencies {
      * UI Widgets
      */
     compile 'com.rengwuxian.materialedittext:library:2.1.4' // Material EditText widget -> https://github.com/rengwuxian/MaterialEditText
+    compile 'com.miguelcatalan:materialsearchview:1.4.0' // Material Search Bar -> https://github.com/MiguelCatalan/MaterialSearchView
 
     /**
      * ===============================================================

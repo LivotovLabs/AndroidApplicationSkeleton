@@ -8,24 +8,22 @@ import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
+import android.support.design.widget.Snackbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
+import butterknife.ButterKnife;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.arellomobile.mvp.MvpAppCompatActivity;
-
-import org.greenrobot.eventbus.Subscribe;
-
-import butterknife.ButterKnife;
 import eu.livotov.labs.androidappskeleton.R;
 import eu.livotov.labs.androidappskeleton.core.App;
 import eu.livotov.labs.androidappskeleton.event.permission.PermissionGrantEvent;
 import eu.livotov.labs.androidappskeleton.event.system.ForceFinishActivityEvent;
 import eu.livotov.labs.androidappskeleton.event.system.GenericErrorEvent;
 import eu.livotov.labs.androidappskeleton.fragment.base.BaseFragment;
+import org.greenrobot.eventbus.Subscribe;
 
 /**
  * Created by dlivotov on 09/02/2016.
@@ -113,6 +111,16 @@ public class BaseActivity extends MvpAppCompatActivity
     public void showToast(String text, boolean longToast)
     {
         Toast.makeText(this, text, longToast ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT).show();
+    }
+
+    public void showSnackbar(View target, boolean longDuration, String text)
+    {
+        Snackbar.make(target, text, longDuration ? Snackbar.LENGTH_LONG : Snackbar.LENGTH_SHORT).show();
+    }
+
+    public void showSnackbarWithAction(View target, String text, String actionText, boolean infinite, View.OnClickListener actionListener)
+    {
+        Snackbar.make(target, text, infinite ? Snackbar.LENGTH_INDEFINITE : Snackbar.LENGTH_LONG).setAction(actionText, actionListener).show();
     }
 
     @Override

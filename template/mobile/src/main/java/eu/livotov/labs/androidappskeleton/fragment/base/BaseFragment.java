@@ -4,20 +4,19 @@ import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
+import android.support.design.widget.Snackbar;
 import android.text.TextUtils;
 import android.view.View;
-
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.arellomobile.mvp.MvpFragment;
-
-import org.greenrobot.eventbus.Subscribe;
-
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import eu.livotov.labs.androidappskeleton.R;
 import eu.livotov.labs.androidappskeleton.activity.base.BaseActivity;
+import eu.livotov.labs.androidappskeleton.core.App;
 import eu.livotov.labs.androidappskeleton.event.stub.DummyEvent;
+import org.greenrobot.eventbus.Subscribe;
 
 /**
  * Created by dlivotov on 07/06/2016.
@@ -107,8 +106,7 @@ public class BaseFragment extends MvpFragment
         if (!TextUtils.isEmpty(message))
         {
             builder.content(message);
-        }
-        else
+        } else
         {
             builder.content("");
         }
@@ -139,6 +137,40 @@ public class BaseFragment extends MvpFragment
                 }
             }
         });
+
+        builder.show();
+    }
+
+    /**
+     * Shows a toast for this activity.
+     *
+     * @param text      text to show as toast
+     * @param longToast show a tost message with a longer lifetime
+     */
+    public void showToast(@StringRes int text, boolean longToast)
+    {
+        showToast(getString(text), longToast);
+    }
+
+    /**
+     * Shows a toast for this activity.
+     *
+     * @param text      text to show as toast
+     * @param longToast show a tost message with a longer lifetime
+     */
+    public void showToast(String text, boolean longToast)
+    {
+        App.showToast(text, longToast);
+    }
+
+    public void showSnackbar(View target, boolean longDuration, String text)
+    {
+        Snackbar.make(target, text, longDuration ? Snackbar.LENGTH_LONG : Snackbar.LENGTH_SHORT).show();
+    }
+
+    public void showSnackbarWithAction(View target, String text, String actionText, boolean infinite, View.OnClickListener actionListener)
+    {
+        Snackbar.make(target, text, infinite ? Snackbar.LENGTH_INDEFINITE : Snackbar.LENGTH_LONG).setAction(actionText, actionListener).show();
     }
 
     /**
