@@ -23,7 +23,8 @@ echo
 echo "Bootstrapping project, please wait...";
 
 mkdir -p "$PROJECT_LOCATION"
-cp -r template/* "$PROJECT_LOCATION"
+cp -r template/* "$PROJECT_LOCATION/"
+cp template/.gitignore "$PROJECT_LOCATION/"
 
 find "$PROJECT_LOCATION/" -type f -name '*.gradle' -exec sed -i '' "s/$TMPL_NAME/$PROJECT_NAME/g" {} \;
 find "$PROJECT_LOCATION/" -type f -name '*.xml' -exec sed -i '' "s/$TMPL_NAME/$PROJECT_NAME/g" {} \;
