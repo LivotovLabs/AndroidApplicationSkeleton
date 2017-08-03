@@ -1,49 +1,17 @@
 /**
- * Application release and debug builds signing configs.
- */
-
-/**
- * 1. Define full pathname to your signing configuration file.
- * Ensure, it is (along with the keystore file) stored out of VCS root(s) and never committed to a version control system
- */
-def signingPropsFile = System.getProperties().getProperty("user.home") + "/signing.properties"
-
-/**
- * 2. Define the following properties in your signing configuration file specified above:
+ * Since google now supports upload and publish keys separation, there is no need to make huge activities here in regards to
+ * keep the keystore and its password(s) safe.
  *
- * STORE_FILE       Full path to your keystore file
- * STORE_PASSWORD   Password for your keystore file
- * KEY_ALIAS        Signing key alias
- * KEY_PASSWORD     Signing key password
- */
-def Properties props = new Properties()
-def propFile = new File(signingPropsFile)
-
-/**
- * If steps 1 and 2 above are performed correctly, your debug and release build will be automatically signed with the specified key.
- * Otherwise both builds will not be signed.
- *
- * You can also customize the configuration script below to adjust to your specific needs, for instance, if you want to sign release
- * and debug builds
+ * Now you can just store the keystore in git as well as it's passwords here as the signing key will be used for upload only.
+ * The real signing key must be submitted to your play console and google will safely sign your app after upload.
  */
 
-if (propFile.canRead()) {
-    props.load(new FileInputStream(propFile))
+android.signingConfigs.release.storeFile = new File("$rootProject.projectDir/config/upload.jks")
+android.signingConfigs.release.storePassword = "qwertyuiop"
+android.signingConfigs.release.keyAlias = "upload"
+android.signingConfigs.release.keyPassword = "asdfghjkl"
 
-    if (props != null && props.containsKey('STORE_FILE') && props.containsKey('STORE_PASSWORD') && props.containsKey('KEY_ALIAS') && props.containsKey('KEY_PASSWORD')) {
-        android.signingConfigs.release.storeFile = file(props['STORE_FILE'])
-        android.signingConfigs.release.storePassword = props['STORE_PASSWORD']
-        android.signingConfigs.release.keyAlias = props['KEY_ALIAS']
-        android.signingConfigs.release.keyPassword = props['KEY_PASSWORD']
-        android.signingConfigs.debug.storeFile = file(props['STORE_FILE'])
-        android.signingConfigs.debug.storePassword = props['STORE_PASSWORD']
-        android.signingConfigs.debug.keyAlias = props['KEY_ALIAS']
-        android.signingConfigs.debug.keyPassword = props['KEY_PASSWORD']
-    } else {
-        println "\n\n\nWARNING !!!\nMissing important entries in ${signingPropsFile} !\nEnsure you define STORE_FILE, STORE_PASSWORD, KEY_ALIAS and KEY_PASSWORD properties and they are valid !\n\n\n"
-        android.buildTypes.release.signingConfig = null
-    }
-} else {
-    println "\n\n\nWARNING !!!\nSigning configuration file is not set or not found: ${signingPropsFile}\n\n\n"
-    android.buildTypes.release.signingConfig = null
-}
+android.signingConfigs.debug.storeFile = new File("$rootProject.projectDir/config/upload.jks")
+android.signingConfigs.debug.storePassword = "qwertyuiop"
+android.signingConfigs.debug.keyAlias = "upload"
+android.signingConfigs.debug.keyPassword = "asdfghjkl"
