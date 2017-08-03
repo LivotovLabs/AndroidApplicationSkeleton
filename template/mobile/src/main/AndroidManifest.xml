@@ -13,21 +13,17 @@
         >
 
         <activity
-            android:name=".activity.SplashActivity"
-            android:theme="@style/SplashTheme"
-            >
+                android:name=".activity.MainActivity"
+                android:label="@string/app_full_application_name"
+                android:theme="@style/SplashTheme"
+                >
 
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
         </activity>
-
-        <activity
-            android:name=".activity.MainActivity"
-            android:label="@string/app_full_application_name"
-            />
 
         <service
             android:name=".service.AppFirebaseToBackendDeliveryService"

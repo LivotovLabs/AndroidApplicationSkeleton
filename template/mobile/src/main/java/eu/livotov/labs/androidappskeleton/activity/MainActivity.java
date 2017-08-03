@@ -1,10 +1,8 @@
 package eu.livotov.labs.androidappskeleton.activity;
 
 import android.os.Bundle;
-
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.mikepenz.materialize.MaterializeBuilder;
-
 import eu.livotov.labs.androidappskeleton.R;
 import eu.livotov.labs.androidappskeleton.activity.base.BaseActivity;
 import eu.livotov.labs.androidappskeleton.example.mvp.TestPresenter;
@@ -22,6 +20,7 @@ public class MainActivity extends BaseActivity implements TestPresenter.View
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.AppTheme);
         setContentView(R.layout.activity_main);
         new MaterializeBuilder().withActivity(this).build();
     }
