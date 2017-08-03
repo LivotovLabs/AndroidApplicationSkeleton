@@ -1,9 +1,9 @@
 /**
- * Since google now supports upload and publish keys separation, there is no need to make huge activities here in regards to
- * keep the keystore and its password(s) safe.
+ * Since google now supports upload and publish keys separation, there is no need to make huge activities here in order to
+ * keep the keys and their passwords safe.
  *
- * Now you can just store the keystore in git as well as it's passwords here as the signing key will be used for upload only.
- * The real signing key must be submitted to your play console and google will safely sign your app after upload.
+ * Now you can safely store the upload keystore in VCS as well as it's passwords as the signing key will be used for upload only.
+ * The real signing key must be generated separately and submitted to your play console , then google will safely sign your app after upload.
  */
 
 android.signingConfigs.release.storeFile = new File("$rootProject.projectDir/config/upload.jks")
