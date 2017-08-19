@@ -14,6 +14,7 @@ ext {
             support13   : "com.android.support:support-v13:${supportLibVersion}",
             annotation  : "com.android.support:support-annotations:${supportLibVersion}",
             palette     : "com.android.support:palette-v7:${supportLibVersion}",
+            percent     : "com.android.support:percent:${supportLibVersion}",
             multidex    : "com.android.support:multidex:${multidexLibVersion}"
     ]
 

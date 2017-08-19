@@ -15,7 +15,6 @@ repositories {
 apply plugin: 'com.android.application'
 apply plugin: 'com.jakewharton.hugo'
 apply plugin: 'io.objectbox'
-apply plugin: 'com.neenbedankt.android-apt'
 
 def gitSha() {
     return 'git rev-parse --short HEAD'.execute().text.trim()
@@ -168,7 +167,7 @@ dependencies {
     /**
      * In-app DB
      */
-    compile 'io.objectbox:objectbox-android:0.9.13'
+    compile 'io.objectbox:objectbox-android:0.9.14'
     
     /**
      * Reactive Extensions to JVM
@@ -218,18 +217,18 @@ dependencies {
      * Annotation-based Processing Tools
      */
     compile 'com.jakewharton:butterknife:8.7.0'
-    apt 'com.jakewharton:butterknife-compiler:8.7.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
 
     compile 'in.workarounds.bundler:bundler-annotations:0.1.1'
     compile 'in.workarounds.bundler:bundler-parceler:0.1.1'
-    apt 'in.workarounds.bundler:bundler-compiler:0.1.1'
+    annotationProcessor 'in.workarounds.bundler:bundler-compiler:0.1.1'
 
     compile 'org.parceler:parceler-api:1.1.6'
-    apt 'org.parceler:parceler:1.1.6'
+    annotationProcessor 'org.parceler:parceler:1.1.6'
 
     compile 'com.github.hotchemi:permissionsdispatcher:2.4.0'
-    apt 'com.github.hotchemi:permissionsdispatcher-processor:2.4.0'
-    apt 'com.github.AleksanderMielczarek:AndroidAnnotationsPermissionsDispatcherPlugin:0.1.0'
+    annotationProcessor 'com.github.hotchemi:permissionsdispatcher-processor:2.4.0'
+    annotationProcessor 'com.github.AleksanderMielczarek:AndroidAnnotationsPermissionsDispatcherPlugin:0.1.0'
 
     /**
      * MVP Support
@@ -237,7 +236,7 @@ dependencies {
     compile 'com.arello-mobile:moxy:1.5.3'
     compile 'com.arello-mobile:moxy-android:1.5.3'
     compile 'com.arello-mobile:moxy-app-compat:1.5.3'
-    apt 'com.arello-mobile:moxy-compiler:1.5.3'
+    annotationProcessor 'com.arello-mobile:moxy-compiler:1.5.3'
 
     /**
      * Material Design Support and low-level UI libs

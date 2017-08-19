@@ -9,7 +9,6 @@ buildscript {
 
 apply plugin: 'com.android.application'
 apply plugin: 'com.jakewharton.hugo'
-apply plugin: 'com.neenbedankt.android-apt'
 
 def gitSha() {
     return 'git rev-parse --short HEAD'.execute().text.trim()
