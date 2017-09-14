@@ -9,21 +9,26 @@ ext {
      * Build Tools Versions
      */
     androidGradlePluginVersion = '2.3.0'
-    androidBuildToolsVersion = '25.0.3'
-    androidTargetSdkVersion = 25
-    androidCompileSdkVersion = 25
+    androidBuildToolsVersion = '26.0.1'
+    androidTargetSdkVersion = 26
+    androidCompileSdkVersion = 26
     androidMinSdkVersion = 19
     googleServicesPluginVersion = '3.0.0'
 
     /**
      * System Libraries Versions
      */
-    supportLibVersion = '25.3.1'
+    supportLibVersion = '26.0.2'
     wearableSupportVersion = '2.0.0'
-    gmsLibVersion = '10.2.0'
-    firebaseVersion = '10.2.4'
+    gmsLibVersion = '11.2.2'
+    firebaseVersion = '11.2.2'
     multidexLibVersion = '1.0.1'
 
+    /**
+     * Embedded Database Version
+     */
+    objectboxVersion = '1.0.1'
+    
     /**
      * App Version
      * The final versionCode and versionName build properties will be automatically formed from the

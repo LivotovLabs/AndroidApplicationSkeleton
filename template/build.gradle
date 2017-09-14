@@ -13,8 +13,7 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:$androidGradlePluginVersion"
         classpath "com.google.gms:google-services:$googleServicesPluginVersion"
-        classpath 'com.jakewharton.hugo:hugo-plugin:1.2.1'
-        classpath 'io.objectbox:objectbox-gradle-plugin:0.9.14'
+        classpath "io.objectbox:objectbox-gradle-plugin:$objectboxVersion"
     }
 }
 
@@ -23,6 +22,7 @@ allprojects {
     repositories {
         jcenter()
         maven { url "https://jitpack.io" }
+        maven { url "http://objectbox.net/beta-repo/" }
         maven { url "https://maven.google.com" }
     }
 }
