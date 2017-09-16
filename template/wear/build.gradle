@@ -14,13 +14,13 @@ def gitSha() {
 }
 
 android {
-    compileSdkVersion androidCompileSdkVersion
+    compileSdkVersion androidWearCompileSdkVersion
     buildToolsVersion androidBuildToolsVersion
 
     defaultConfig {
         applicationId appId
-        minSdkVersion androidMinSdkVersion
-        targetSdkVersion androidTargetSdkVersion
+        minSdkVersion androidWearMinSdkVersion
+        targetSdkVersion androidWearTargetSdkVersion
         versionCode appVersionMajor * 10000 + appVersionMinor * 1000 + appVersionPatch * 100 + appVersionBuild
         versionName "${appVersionPrefix}${appVersionMajor}.${appVersionMinor}.${appVersionPatch}${appVersionSuffix}, build W-${gitSha()}"
         multiDexEnabled false
@@ -75,7 +75,6 @@ android {
         javaMaxHeapSize "4g"
     }
 
-
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES.txt'
         exclude 'META-INF/LICENSE.txt'
@@ -96,6 +95,8 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile wearSupportLibs.support
+    compile wearSupportLibs.wearable
+    provided wearSupportLibs.wearableStubs
     compile playServicesLibs.wearable
 }
 

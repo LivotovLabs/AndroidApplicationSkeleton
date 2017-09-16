@@ -121,7 +121,6 @@ dependencies {
      * Local libs and modules
      */
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    wearApp project(':wear')
 
     /**
      * ===============================================================

@@ -19,7 +19,9 @@ ext {
     ]
 
     wearSupportLibs = [
-            support: "com.google.android.support:wearable:${wearableSupportVersion}",
+            support         : "com.android.support:wear:${wearSupportLibVersion}",
+            wearable        : "com.google.android.support:wearable:${wearableSupportVersion}",
+            wearableStubs   : "com.google.android.wearable:wearable:${wearableSupportVersion}",
     ]
 
     playServicesLibs = [
