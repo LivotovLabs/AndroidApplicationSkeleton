@@ -180,6 +180,11 @@ dependencies {
     compile 'org.greenrobot:eventbus:3.0.0'
 
     /**
+     * Encryption and biometry
+     */
+    compile 'com.mtramin:rxfingerprint:2.1.0' // https://github.com/Mauin/RxFingerprint
+    
+    /**
      * Extended Logger
      */
     compile 'com.github.orhanobut:logger:2.1.1' // Logger.addLogAdapter(new AndroidLogAdapter()); => Logger.d(...)
