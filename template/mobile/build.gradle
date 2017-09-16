@@ -200,12 +200,12 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.okhttp3:okhttp:3.6.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
-    compile 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
 
     /**
-     * Image Loader Library
+     * Image Loader - http://bumptech.github.io/glide/doc/getting-started.html
      */
-    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.github.bumptech.glide:glide:4.1.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.1.1'
 
     /**
      * Reactive Extension To Google Location Services
