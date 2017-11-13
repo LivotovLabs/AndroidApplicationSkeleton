@@ -217,5 +217,11 @@
   public *;
 }
 
+# Protect ObjectBox
+-keep class io.objectbox.** { *; }
+-keepclassmembers class io.objectbox.** { *; }
+-keepclassmembers interface io.objectbox.** { *; }
+-keeppackagenames io.objectbox.**
+
 # for DexGuard only
 # -keepresourcexmlelements manifest/application/meta-data@value=GlideModule

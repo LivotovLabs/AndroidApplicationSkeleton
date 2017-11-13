@@ -206,10 +206,15 @@ dependencies {
     compile 'com.squareup.okhttp3:logging-interceptor:3.9.0'
 
     /**
-     * Image Loader - http://bumptech.github.io/glide/doc/getting-started.html
+     * Image Loader - http://bumptech.github.io/glide/doc/getting-started.html , RecyclerView notes: http://bumptech.github.io/glide/int/recyclerview.html
      */
     compile 'com.github.bumptech.glide:glide:4.1.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.1.1'
+    compile "com.github.bumptech.glide:okhttp3-integration:4.1.1"
+    compile ("com.github.bumptech.glide:recyclerview-integration:4.1.1") {
+        transitive = false
+    }
+
 
     /**
      * Reactive Extension To Google Location Services
