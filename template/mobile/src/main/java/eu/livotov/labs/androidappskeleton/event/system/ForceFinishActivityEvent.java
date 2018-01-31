@@ -1,6 +1,6 @@
 package eu.livotov.labs.androidappskeleton.event.system;
 
-import eu.livotov.labs.androidappskeleton.activity.base.BaseActivity;
+import eu.livotov.labs.androidappskeleton.core.base.BaseActivity;
 
 /**
  * Created by dlivotov on 09/02/2016.

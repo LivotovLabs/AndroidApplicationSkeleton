@@ -176,18 +176,13 @@ dependencies {
     /**
      * Events Bus
      */
-    compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'org.greenrobot:eventbus:3.1.1'
 
     /**
      * Encryption and biometry
      */
-    compile 'com.mtramin:rxfingerprint:2.1.0' // https://github.com/Mauin/RxFingerprint
+    compile 'com.mtramin:rxfingerprint:2.2.1' // https://github.com/Mauin/RxFingerprint
     
-    /**
-     * Extended Logger
-     */
-    compile 'com.github.orhanobut:logger:2.1.1' // Logger.addLogAdapter(new AndroidLogAdapter()); => Logger.d(...)
-
     /**
      * RoboTools General Utils Library
      */
@@ -202,16 +197,16 @@ dependencies {
                 exclude module: 'okhttp3'
             }
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
-    compile 'com.squareup.okhttp3:okhttp:3.9.0'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+    compile 'com.squareup.okhttp3:okhttp:3.9.1'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.9.1'
 
     /**
      * Image Loader - http://bumptech.github.io/glide/doc/getting-started.html , RecyclerView notes: http://bumptech.github.io/glide/int/recyclerview.html
      */
-    compile 'com.github.bumptech.glide:glide:4.1.1'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.1.1'
-    compile "com.github.bumptech.glide:okhttp3-integration:4.1.1"
-    compile ("com.github.bumptech.glide:recyclerview-integration:4.1.1") {
+    compile 'com.github.bumptech.glide:glide:4.5.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
+    compile "com.github.bumptech.glide:okhttp3-integration:4.5.0"
+    compile ("com.github.bumptech.glide:recyclerview-integration:4.5.0") {
         transitive = false
     }
 
@@ -231,12 +226,11 @@ dependencies {
     compile 'in.workarounds.bundler:bundler-parceler:0.1.1'
     annotationProcessor 'in.workarounds.bundler:bundler-compiler:0.1.1'
 
-    compile 'org.parceler:parceler-api:1.1.9'
-    annotationProcessor 'org.parceler:parceler:1.1.9'
+    compile 'org.parceler:parceler-api:1.1.10'
+    annotationProcessor 'org.parceler:parceler:1.1.10'
 
-    compile 'com.github.hotchemi:permissionsdispatcher:2.4.0'
-    annotationProcessor 'com.github.hotchemi:permissionsdispatcher-processor:2.4.0'
-    annotationProcessor 'com.github.AleksanderMielczarek:AndroidAnnotationsPermissionsDispatcherPlugin:0.1.0'
+    compile 'com.github.hotchemi:permissionsdispatcher:3.1.0'
+    annotationProcessor 'com.github.hotchemi:permissionsdispatcher-processor:3.1.0'
 
     /**
      * MVP Support
@@ -250,25 +244,25 @@ dependencies {
      * Material Design Support and low-level UI libs
      */
     compile 'com.dmitrymalkovich.android:material-design-dimens:1.4'
-    compile 'com.mikepenz:materialize:1.0.3'
-    compile 'com.mikepenz:materialdrawer:5.9.5'
+    compile 'com.mikepenz:materialize:1.1.2'
+    compile 'com.mikepenz:materialdrawer:6.0.4'
     compile 'com.roughike:bottom-bar:2.3.1'
-    compile 'eu.davidea:flexible-adapter:5.0.0-rc2' // Flexible and easy to use RecyclerView adapter -> https://github.com/davideas/FlexibleAdapter
+    compile 'eu.davidea:flexible-adapter:5.0.0-rc4' // Flexible and easy to use RecyclerView adapter -> https://github.com/davideas/FlexibleAdapter
     compile "com.daimajia.swipelayout:library:1.2.0"
-    compile "com.andkulikov:transitionseverywhere:1.7.5"
+    compile "com.andkulikov:transitionseverywhere:1.7.8"
 
     /**
      * UI Dialogs
      */
     compile 'com.kbeanie:multipicker:1.1.31'
-    compile 'com.afollestad.material-dialogs:core:0.9.4.7' // All kind of material dialogs -> https://github.com/afollestad/material-dialogs
-    compile 'com.wdullaer:materialdatetimepicker:3.3.0' // Material Date & Time pickers -> https://github.com/wdullaer/MaterialDateTimePicker
+    compile 'com.afollestad.material-dialogs:core:0.9.6.0' // All kind of material dialogs -> https://github.com/afollestad/material-dialogs
+    compile 'com.wdullaer:materialdatetimepicker:3.5.0' // Material Date & Time pickers -> https://github.com/wdullaer/MaterialDateTimePicker
 
     /**
      * Image Widgets
      */
-    compile 'com.theartofdev.edmodo:android-image-cropper:2.5.0' // Simple pick and crop images -> https://github.com/ArthurHub/Android-Image-Cropper/wiki
-    compile 'com.davemorrissey.labs:subsampling-scale-image-view:3.6.0' // Image view to show unlimited size images without pressing the RAM -> https://github.com/davemorrissey/subsampling-scale-image-view
+    compile 'com.theartofdev.edmodo:android-image-cropper:2.6.0' // Simple pick and crop images -> https://github.com/ArthurHub/Android-Image-Cropper/wiki
+    compile 'com.davemorrissey.labs:subsampling-scale-image-view:3.9.0' // Image view to show unlimited size images without pressing the RAM -> https://github.com/davemorrissey/subsampling-scale-image-view
 
     /**
      * UI Widgets

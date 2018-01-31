@@ -1,7 +1,6 @@
-package eu.livotov.labs.androidappskeleton.example.api.model.api.in;
+package eu.livotov.labs.androidappskeleton.data;
 
 import com.google.gson.annotations.SerializedName;
-
 import retrofit2.Call;
 
 public class ApiError

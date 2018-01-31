@@ -1,4 +1,4 @@
-package eu.livotov.labs.androidappskeleton.core.glide;
+package eu.livotov.labs.androidappskeleton.core;
 
 import com.bumptech.glide.annotation.GlideModule;
 import com.bumptech.glide.module.AppGlideModule;

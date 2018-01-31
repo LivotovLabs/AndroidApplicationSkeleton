@@ -1,9 +1,8 @@
-package eu.livotov.labs.androidappskeleton.activity.base;
+package eu.livotov.labs.androidappskeleton.core.base;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.DialogInterface;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
@@ -19,10 +18,8 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import eu.livotov.labs.androidappskeleton.R;
 import eu.livotov.labs.androidappskeleton.core.App;
-import eu.livotov.labs.androidappskeleton.event.permission.PermissionGrantEvent;
 import eu.livotov.labs.androidappskeleton.event.system.ForceFinishActivityEvent;
 import eu.livotov.labs.androidappskeleton.event.system.GenericErrorEvent;
-import eu.livotov.labs.androidappskeleton.fragment.base.BaseFragment;
 import org.greenrobot.eventbus.Subscribe;
 
 /**
@@ -30,6 +27,7 @@ import org.greenrobot.eventbus.Subscribe;
  */
 public class BaseActivity extends MvpAppCompatActivity
 {
+
     public static final int PERMISSION_ACQUIRE_REQUEST_CODE = 9876;
 
     private MaterialDialog blockingProgressDialog;
@@ -123,29 +121,6 @@ public class BaseActivity extends MvpAppCompatActivity
         Snackbar.make(target, text, infinite ? Snackbar.LENGTH_INDEFINITE : Snackbar.LENGTH_LONG).setAction(actionText, actionListener).show();
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults)
-    {
-        switch (requestCode)
-        {
-            case PERMISSION_ACQUIRE_REQUEST_CODE:
-            {
-                if (permissions.length > 0 && grantResults.length > 0)
-                {
-                    PermissionGrantEvent event = new PermissionGrantEvent();
-
-                    for (int i = 0; i < permissions.length; i++)
-                    {
-                        event.addPermission(permissions[i], grantResults[i] == PackageManager.PERMISSION_GRANTED);
-                    }
-
-                    App.postEvent(event);
-                }
-                break;
-            }
-        }
-    }
-
     @Subscribe
     public void forceQuitEvent(ForceFinishActivityEvent data)
     {
@@ -180,8 +155,7 @@ public class BaseActivity extends MvpAppCompatActivity
         if (!TextUtils.isEmpty(message))
         {
             builder.content(message);
-        }
-        else
+        } else
         {
             builder.content("");
         }
@@ -221,8 +195,7 @@ public class BaseActivity extends MvpAppCompatActivity
         {
             getFragmentManager().beginTransaction().replace(android.R.id.content, fragment, fragment.getClass().getCanonicalName()).disallowAddToBackStack().commitAllowingStateLoss();
             return fragment;
-        }
-        else
+        } else
         {
             return (F) getFragmentManager().findFragmentByTag(fragment.getClass().getCanonicalName());
         }
@@ -253,8 +226,7 @@ public class BaseActivity extends MvpAppCompatActivity
             {
                 getFragmentManager().beginTransaction().remove(fragment).commitAllowingStateLoss();
             }
-        }
-        catch (Throwable ignored)
+        } catch (Throwable ignored)
         {
         }
     }
@@ -266,8 +238,7 @@ public class BaseActivity extends MvpAppCompatActivity
         if (mgr.getBackStackEntryCount() > 0)
         {
             mgr.popBackStack();
-        }
-        else
+        } else
         {
             finish();
         }
@@ -303,8 +274,7 @@ public class BaseActivity extends MvpAppCompatActivity
         if (!TextUtils.isEmpty(message))
         {
             builder.content(message);
-        }
-        else
+        } else
         {
             builder.content("");
         }
@@ -458,8 +428,7 @@ public class BaseActivity extends MvpAppCompatActivity
                 blockingProgressDialog.setContent(TextUtils.isEmpty(description) ? "" : description);
                 blockingProgressDialog.setProgress(progress >= 0 ? (int) (100 * progress) : 0);
                 blockingProgressDialog.setCancelable(cancelable);
-            }
-            else
+            } else
             {
                 MaterialDialog.Builder builder = new MaterialDialog.Builder(this);
 
@@ -582,11 +551,13 @@ public class BaseActivity extends MvpAppCompatActivity
 
     public interface DialogCloseCallback
     {
+
         void onDialogClosed();
     }
 
     public interface QuestionDialogCallback
     {
+
         void onPositiveAnsfer();
 
         void onNegativeAnswer();

@@ -3,17 +3,17 @@
           xmlns:tools="http://schemas.android.com/tools">
 
     <application
-        android:name=".core.App"
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_full_application_name"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        tools:replace="android:label"
+            android:name=".core.App"
+            android:allowBackup="false"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_full_application_name"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme"
+            tools:replace="android:label"
         >
 
         <activity
-                android:name=".activity.MainActivity"
+                android:name=".ui.MainActivity"
                 android:label="@string/app_full_application_name"
                 android:theme="@style/SplashTheme"
                 >

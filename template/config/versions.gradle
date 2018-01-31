@@ -31,7 +31,7 @@ ext {
     /**
      * Embedded Database Version
      */
-    objectboxVersion = '1.0.1'
+    objectboxVersion = '1.4.1'
     
     /**
      * App Version

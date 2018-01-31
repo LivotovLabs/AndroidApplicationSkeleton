@@ -1,4 +1,4 @@
-package eu.livotov.labs.androidappskeleton.activity;
+package eu.livotov.labs.androidappskeleton.ui;
 
 import android.content.Intent;
 import android.os.Bundle;

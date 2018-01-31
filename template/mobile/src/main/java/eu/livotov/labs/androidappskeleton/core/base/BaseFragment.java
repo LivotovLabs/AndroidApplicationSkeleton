@@ -1,4 +1,4 @@
-package eu.livotov.labs.androidappskeleton.fragment.base;
+package eu.livotov.labs.androidappskeleton.core.base;
 
 import android.app.FragmentManager;
 import android.os.Bundle;
@@ -13,7 +13,6 @@ import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.arellomobile.mvp.MvpFragment;
 import eu.livotov.labs.androidappskeleton.R;
-import eu.livotov.labs.androidappskeleton.activity.base.BaseActivity;
 import eu.livotov.labs.androidappskeleton.core.App;
 import eu.livotov.labs.androidappskeleton.event.stub.DummyEvent;
 import org.greenrobot.eventbus.Subscribe;
