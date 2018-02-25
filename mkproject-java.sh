@@ -4,7 +4,7 @@ TMPL_PACKAGE="eu.livotov.labs.androidappskeleton"
 TMPL_PACKAGE_TLD="eu"
 TMPL_NAME="LLAndroidApplicationTemplate"
 
-echo "Livotov Labs > Android Project Template v1.0"
+echo "Livotov Labs > Android Project Template v1.1 [Java Version]"
 echo
 
 read -p "Application name: " PROJECT_NAME
@@ -20,11 +20,11 @@ fi
 
 echo
 echo
-echo "Bootstrapping project, please wait...";
+echo "Bootstrapping Java-based project, please wait...";
 
 mkdir -p "$PROJECT_LOCATION"
-cp -r template/* "$PROJECT_LOCATION/"
-cp template/.gitignore "$PROJECT_LOCATION/"
+cp -r template-java/* "$PROJECT_LOCATION/"
+cp template-java/.gitignore "$PROJECT_LOCATION/"
 
 find "$PROJECT_LOCATION/" -type f -name '*.gradle' -exec sed -i '' "s/$TMPL_NAME/$PROJECT_NAME/g" {} \;
 find "$PROJECT_LOCATION/" -type f -name '*.xml' -exec sed -i '' "s/$TMPL_NAME/$PROJECT_NAME/g" {} \;
@@ -60,8 +60,6 @@ rm -rf "$PROJECT_LOCATION/.idea"
 rm -f "$PROJECT_LOCATION/mobile/*.iml"
 rm -f "$PROJECT_LOCATION/wear/*.iml"
 
-echo "Bootstrapping completed, your project is now ready at $PROJECT_LOCATION"
+echo "Bootstrapping completed, your Java-based project is now ready at $PROJECT_LOCATION"
 echo
 echo
-
-
