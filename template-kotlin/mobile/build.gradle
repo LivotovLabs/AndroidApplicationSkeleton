@@ -199,11 +199,6 @@ dependencies {
     compile 'com.mtramin:rxfingerprint:2.2.1' // https://github.com/Mauin/RxFingerprint
 
     /**
-     * RoboTools General Utils Library
-     */
-    compile 'eu.livotov.labs.android:RoboToolsLibrary:3.0.5.0-RC1'
-
-    /**
      * REST API Client
      */
     compile('com.squareup.retrofit2:retrofit:2.3.0')

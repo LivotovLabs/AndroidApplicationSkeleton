@@ -3,7 +3,7 @@
           xmlns:tools="http://schemas.android.com/tools">
 
     <application
-        android:name=".core.App"
+        android:name=".App"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_full_application_name"
@@ -13,7 +13,7 @@
         >
 
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_full_application_name"
             android:theme="@style/SplashTheme"
             >
@@ -26,18 +26,19 @@
         </activity>
 
         <service
-            android:name=".service.AppFirebaseToBackendDeliveryService"
-            android:exported="false"/>
+            android:name=".AppFirebaseToBackendDeliveryService"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
 
         <service
-            android:name=".service.AppFirebaseInstanceIDService">
+            android:name=".AppFirebaseInstanceIDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
             </intent-filter>
         </service>
 
         <service
-            android:name=".service.AppFirebaseMessageService">
+            android:name=".AppFirebaseMessageService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
