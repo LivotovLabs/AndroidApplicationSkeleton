@@ -1,0 +1,52 @@
+/**
+ * This is te system deps artifacts and versions configuration file.
+ * You can put here your app-specific deps too, if you wish.
+ */
+
+ext {
+
+    supportLibs = [
+            design      : "com.android.support:design:${supportLibVersion}",
+            recyclerView: "com.android.support:recyclerview-v7:${supportLibVersion}",
+            cardView    : "com.android.support:cardview-v7:${supportLibVersion}",
+            grid        : "com.android.support:gridlayout-v7:${supportLibVersion}",
+            appCompat   : "com.android.support:appcompat-v7:${supportLibVersion}",
+            support13   : "com.android.support:support-v13:${supportLibVersion}",
+            annotation  : "com.android.support:support-annotations:${supportLibVersion}",
+            palette     : "com.android.support:palette-v7:${supportLibVersion}",
+            percent     : "com.android.support:percent:${supportLibVersion}",
+            multidex    : "com.android.support:multidex:${multidexLibVersion}"
+    ]
+
+    wearSupportLibs = [
+            support         : "com.android.support:wear:${wearSupportLibVersion}",
+            wearable        : "com.google.android.support:wearable:${wearableSupportVersion}",
+            wearableStubs   : "com.google.android.wearable:wearable:${wearableSupportVersion}",
+    ]
+
+    playServicesLibs = [
+            base     : "com.google.android.gms:play-services-base:${gmsLibVersion}",
+            gcm      : "com.google.android.gms:play-services-gcm:${gmsLibVersion}",
+            location : "com.google.android.gms:play-services-location:${gmsLibVersion}",
+            places   : "com.google.android.gms:play-services-places:${gmsLibVersion}",
+            maps     : "com.google.android.gms:play-services-maps:${gmsLibVersion}",
+            analytics: "com.google.android.gms:play-services-analytics:${gmsLibVersion}",
+            wearable : "com.google.android.gms:play-services-wearable:${gmsLibVersion}",
+            auth     : "com.google.android.gms:play-services-auth:${gmsLibVersion}",
+            all      : "com.google.android.gms:play-services:${gmsLibVersion}",
+    ]
+
+    firebaseLibs = [
+            core     : "com.google.firebase:firebase-core:${firebaseVersion}",
+            database : "com.google.firebase:firebase-database:${firebaseVersion}",
+            storage  : "com.google.firebase:firebase-storage:${firebaseVersion}",
+            crash    : "com.google.firebase:firebase-crash:${firebaseVersion}",
+            auth     : "com.google.firebase:firebase-auth:${firebaseVersion}",
+            messaging: "com.google.firebase:firebase-messaging:${firebaseVersion}",
+            config   : "com.google.firebase:firebase-config:${firebaseVersion}",
+            invites  : "com.google.firebase:firebase-invites:${firebaseVersion}",
+            ads      : "com.google.firebase:firebase-ads:${firebaseVersion}",
+            appindex : "com.google.android.gms:play-services-appindexing:${firebaseVersion}",
+    ]
+
+}

@@ -1,0 +1,50 @@
+<manifest package="eu.livotov.labs.androidappskeleton"
+          xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:name=".core.App"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_full_application_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:label"
+        >
+
+        <activity
+            android:name=".ui.MainActivity"
+            android:label="@string/app_full_application_name"
+            android:theme="@style/SplashTheme"
+            >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+        </activity>
+
+        <service
+            android:name=".service.AppFirebaseToBackendDeliveryService"
+            android:exported="false"/>
+
+        <service
+            android:name=".service.AppFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".service.AppFirebaseMessageService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
+    </application>
+
+    <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
+
+</manifest>

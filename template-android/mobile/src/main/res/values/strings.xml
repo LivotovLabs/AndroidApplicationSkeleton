@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_full_application_name">LLAndroidApplicationTemplate</string>
+    <string name="generic_dialog_btn_yes">Yes</string>
+    <string name="generic_dialog_btn_no">No</string>
+    <string name="generic_error_dialog_title">Error</string>
+    <string name="unexpected_error_generic_text">Unexpected error, please contact application developer for support.</string>
+    <string name="generic_dialog_btn_ok">OK</string>
+    <string name="form_error_misssed_phone">Please enter valid phone number</string>
+    <string name="form_error_phone_wrong">Phone number appears to be invalid</string>
+    <string name="form_error_missed_password">Please enter your password</string>
+
+    <string name="yesterday">Yesterday, %s</string>
+    <string name="now">Now</string>
+
+    <plurals name="hours">
+        <item quantity="zero">%s hours</item>
+        <item quantity="one">%s hour</item>
+        <item quantity="two">%s hours</item>
+        <item quantity="few">%s hours</item>
+        <item quantity="many">%s hours</item>
+        <item quantity="other">%s hours</item>
+    </plurals>
+
+    <plurals name="minutes">
+        <item quantity="zero">%s minutes</item>
+        <item quantity="one">%s minute</item>
+        <item quantity="two">%s minutes</item>
+        <item quantity="few">%s minutes</item>
+        <item quantity="many">%s minutes</item>
+        <item quantity="other">%s minutes</item>
+    </plurals>
+
+    <plurals name="seconds">
+        <item quantity="zero">%s seconds</item>
+        <item quantity="one">%s second</item>
+        <item quantity="two">%s seconds</item>
+        <item quantity="few">%s seconds</item>
+        <item quantity="many">%s seconds</item>
+        <item quantity="other">%s seconds</item>
+    </plurals>
+
+
+</resources>

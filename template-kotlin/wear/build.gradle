@@ -1,0 +1,121 @@
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+    }
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+def gitSha() {
+    return 'git rev-parse --short HEAD'.execute().text.trim()
+}
+
+android {
+    compileSdkVersion androidWearCompileSdkVersion
+    buildToolsVersion androidBuildToolsVersion
+
+    defaultConfig {
+        applicationId appId
+        minSdkVersion androidWearMinSdkVersion
+        targetSdkVersion androidWearTargetSdkVersion
+        versionCode appVersionMajor * 10000 + appVersionMinor * 1000 + appVersionPatch * 100 + appVersionBuild
+        versionName "${appVersionPrefix}${appVersionMajor}.${appVersionMinor}.${appVersionPatch}${appVersionSuffix}, build W-${gitSha()}"
+        multiDexEnabled false
+    }
+
+    compileOptions {
+        encoding "UTF-8"
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    signingConfigs {
+        release {
+        }
+
+        debug {
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            debuggable false
+            signingConfig signingConfigs.release
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            minifyEnabled false
+            debuggable true
+            shrinkResources false
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    flavorDimensions "app"
+    productFlavors {
+        development {
+            dimension "app"
+        }
+
+        production {
+            dimension "app"
+        }
+    }
+
+    dexOptions {
+        jumboMode = true
+        javaMaxHeapSize "4g"
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LGPL2.1'
+        exclude 'doc/HOW_TO.TXT'
+        exclude 'doc/README'
+        exclude '.readme'
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    /**
+     * System
+     */
+    compile wearSupportLibs.support
+    compile wearSupportLibs.wearable
+    provided wearSupportLibs.wearableStubs
+    compile playServicesLibs.wearable
+
+    /**
+     * Kotlin exts
+     */
+    compile "org.jetbrains.anko:anko-commons:$ankoVersion"
+    implementation "org.jetbrains.anko:anko-coroutines:$ankoVersion"
+    compile "org.jetbrains.anko:anko-design:$ankoVersion"
+}
+
+apply from: "${rootProject.projectDir}/config/signing.gradle"
