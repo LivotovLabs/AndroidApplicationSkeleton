@@ -32,8 +32,8 @@ android {
 
     compileOptions {
         encoding "UTF-8"
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
     }
 
     lintOptions {
@@ -105,10 +105,15 @@ dependencies {
     /**
      * System
      */
-    compile wearSupportLibs.support
-    compile wearSupportLibs.wearable
-    provided wearSupportLibs.wearableStubs
-    compile playServicesLibs.wearable
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation wearSupportLibs.wearable
+    provided wearSupportLibs.wearable
+    implementation wearSupportLibs.support
+    implementation wearSupportLibs.supportCompat
+    implementation wearSupportLibs.supportCoreUtils
+    implementation wearSupportLibs.supportCoreUi
+    implementation playServicesLibs.wearable
+    implementation supportLibs.percent
 
     /**
      * Kotlin exts

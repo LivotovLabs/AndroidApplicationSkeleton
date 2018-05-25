@@ -15,13 +15,16 @@ ext {
             annotation  : "com.android.support:support-annotations:${supportLibVersion}",
             palette     : "com.android.support:palette-v7:${supportLibVersion}",
             percent     : "com.android.support:percent:${supportLibVersion}",
-            multidex    : "com.android.support:multidex:${multidexLibVersion}"
+            multidex    : "com.android.support:multidex:${multidexLibVersion}",
+            constraint  : "com.android.support.constraint:constraint-layout:1.0.2"
     ]
 
     wearSupportLibs = [
-            support         : "com.android.support:wear:${wearSupportLibVersion}",
-            wearable        : "com.google.android.support:wearable:${wearableSupportVersion}",
-            wearableStubs   : "com.google.android.wearable:wearable:${wearableSupportVersion}",
+            wearable: "com.google.android.support:wearable:${wearableSupportVersion}",
+            support: "com.android.support:wear:${wearSupportLibVersion}",
+            supportCompat: "com.android.support:support-compat:${wearSupportLibVersion}",
+            supportCoreUtils: "com.android.support:support-core-utils:${wearSupportLibVersion}",
+            supportCoreUi: "com.android.support:support-core-ui:${wearSupportLibVersion}"
     ]
 
     playServicesLibs = [
