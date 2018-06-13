@@ -2,7 +2,7 @@ package eu.livotov.labs.androidappskeleton
 
 import android.content.SharedPreferences
 
-class Prefs()
+object AppSettings
 {
     val prefs: SharedPreferences = App.self.getSharedPreferences(App.packageId, 0)
 

@@ -20,7 +20,7 @@ class AppFirebaseToBackendDeliveryService : JobIntentService()
 {
     override fun onHandleWork(intent: Intent)
     {
-        val lastDeliveredToken = App.settings.lastDeliveredFcmToken
+        val lastDeliveredToken = AppSettings.lastDeliveredFcmToken
         val currentToken = FirebaseInstanceId.getInstance().token ?: ""
 
         if (!TextUtils.isEmpty(currentToken) && !lastDeliveredToken.equals(currentToken, ignoreCase = true))
@@ -28,7 +28,7 @@ class AppFirebaseToBackendDeliveryService : JobIntentService()
             try
             {
                 sendTokenToBackend(currentToken)
-                App.settings.lastDeliveredFcmToken = currentToken
+                AppSettings.lastDeliveredFcmToken = currentToken
             }
             catch (e: Throwable)
             {
