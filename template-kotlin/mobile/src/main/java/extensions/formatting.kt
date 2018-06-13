@@ -2,23 +2,25 @@ import eu.livotov.labs.androidappskeleton.App
 import eu.livotov.labs.androidappskeleton.R
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.concurrent.getOrSet
 
-internal val appDateAndTimeFormatter = SimpleDateFormat("dd.MM.yyyy HH:mm")
-internal val appDateAndTimeWithSecondsFormatter = SimpleDateFormat("dd.MM.yyyy HH:mm:ss")
-internal val appChatMessageDateTimeOnlyFormatter = SimpleDateFormat("HH:mm")
-internal val appTimeOnlyFormatter = SimpleDateFormat("HH:mm")
+internal val appDateAndTimeFormatter = ThreadLocal<SimpleDateFormat>()
+internal val appTimeOnlyFormatter = ThreadLocal<SimpleDateFormat>()
+
+private fun appDateAndTimeFormatterBuilder() = SimpleDateFormat("dd.MM.yyyy HH:mm")
+private fun appTimeOnlyFormatterBuilder() = SimpleDateFormat("HH:mm")
 
 fun Date.formatDateForEventFeeds(): String
 {
     return if (isToday())
     {
-        if (System.currentTimeMillis() - time < MILLIS_PER_MINUTE) App.self.getString(R.string.now) else appTimeOnlyFormatter.format(this)
+        if (System.currentTimeMillis() - time < MILLIS_PER_MINUTE) App.self.getString(R.string.now) else appTimeOnlyFormatter.getOrSet { appTimeOnlyFormatterBuilder() }.format(this)
     } else if (isYesterday())
     {
-        App.self.getString(R.string.yesterday, appTimeOnlyFormatter.format(this))
+        App.self.getString(R.string.yesterday, appTimeOnlyFormatter.getOrSet { appTimeOnlyFormatterBuilder() }.format(this))
     } else
     {
-        appDateAndTimeFormatter.format(this)
+        appDateAndTimeFormatter.getOrSet { appDateAndTimeFormatterBuilder() }.format(this)
     }
 }
 

@@ -167,9 +167,11 @@ dependencies {
     /**
      * Kotlin exts
      */
-    compile "org.jetbrains.anko:anko-commons:$ankoVersion"
-    implementation "org.jetbrains.anko:anko-coroutines:$ankoVersion"
-    compile "org.jetbrains.anko:anko-design:$ankoVersion"
+    implementation "org.jetbrains.anko:anko:$ankoVersion"
+    implementation 'androidx.core:core-ktx:0.3'
+    implementation 'me.eugeniomarletti:android-extras-delegates:1.0.5'
+    implementation 'com.github.rubengees:kotterknife:1.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
 
     /**
      * ===============================================================
@@ -186,8 +188,8 @@ dependencies {
     /**
      * Reactive Extensions to JVM
      */
-    compile "io.reactivex.rxjava2:rxjava:2.1.6"
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    compile "io.reactivex.rxjava2:rxjava:2.1.13"
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.2'
 
     /**
      * Events Bus
@@ -208,8 +210,8 @@ dependencies {
                 exclude module: 'okhttp3'
             }
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
-    compile 'com.squareup.okhttp3:okhttp:3.9.1'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+    compile 'com.squareup.okhttp3:okhttp:3.10.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.10.0'
 
     /**
      * Image Loader - http://bumptech.github.io/glide/doc/getting-started.html , RecyclerView notes: http://bumptech.github.io/glide/int/recyclerview.html
@@ -239,8 +241,8 @@ dependencies {
     compile 'org.parceler:parceler-api:1.1.10'
     kapt 'org.parceler:parceler:1.1.10'
 
-    compile 'com.github.hotchemi:permissionsdispatcher:3.1.0'
-    kapt 'com.github.hotchemi:permissionsdispatcher-processor:3.1.0'
+    compile 'com.github.hotchemi:permissionsdispatcher:3.2.0'
+    kapt 'com.github.hotchemi:permissionsdispatcher-processor:3.2.0'
 
     /**
      * MVP Support

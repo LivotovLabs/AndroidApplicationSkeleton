@@ -11,6 +11,7 @@
 
     <string name="yesterday">Yesterday, %s</string>
     <string name="now">Now</string>
+    <string name="please_wait">Please Wait…</string>
 
     <plurals name="hours">
         <item quantity="zero">%s hours</item>

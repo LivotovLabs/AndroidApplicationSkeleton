@@ -42,7 +42,6 @@ class App : Application()
         val versionCode by lazy { self.packageManager.getPackageInfo(self.packageName, 0).versionCode }
         val versionName by lazy { self.packageManager.getPackageInfo(self.packageName, 0).versionName }
         val packageId by lazy { self.packageManager.getPackageInfo(self.packageName, 0).packageName }
-        val settings by lazy { Prefs() }
 
         fun toast(text: String) = Toast.makeText(self, text, Toast.LENGTH_SHORT)
         fun longToast(text: String) = Toast.makeText(self, text, Toast.LENGTH_LONG)
