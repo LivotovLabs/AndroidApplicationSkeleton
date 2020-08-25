@@ -4,7 +4,7 @@ TMPL_PACKAGE="eu.livotov.labs.androidappskeleton"
 TMPL_PACKAGE_TLD="eu"
 TMPL_NAME="LLAndroidApplicationTemplate"
 
-echo "Livotov Labs > Android Project Template v1.1 [Kotlin Version]"
+echo "Wontok SMS > Android Brand Template v1.0"
 echo
 
 read -p "Application name: " PROJECT_NAME
