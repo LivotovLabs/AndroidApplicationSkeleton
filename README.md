@@ -1,3 +1,10 @@
+# Deprecation Notice
+
+This project is archived and no more maintained - use our latest KMP template that can work even for an Android-only app:
+https://github.com/LivotovLabs/KMPApplicationBootstrapTemplate
+
+------------
+
 # Android Application Template
 An universal application template to bootstrap your next Android app almost instantly in either old Java or plain Kotlin style!
 
